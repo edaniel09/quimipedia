@@ -112,7 +112,7 @@ export default {
           masa_atomica: 1.0,
           dibujar: true,
           estado: "Gaseoso",
-          tags: ["Gases"],
+          tags: ["Otros no metales"],
           color: "#19d29d"
         },
         {
@@ -169,7 +169,7 @@ export default {
           num_atomico: 2,
           masa_atomica: 4.0,
           dibujar: true,
-          tags: ["Gases"],
+          tags: ["Gases Nobles"],
           estado: "Gaseoso",
           color: "#19d29d"
         },
@@ -181,6 +181,7 @@ export default {
           num_atomico: 3,
           masa_atomica: 6.9,
           dibujar: true,
+          tags: ['Alcalinos']
         },
         {
           simbolo: "Be",
@@ -188,7 +189,7 @@ export default {
           num_atomico: 4,
           masa_atomica: 9.0,
           dibujar: true,
-          tags: ["Alcalino"]
+          tags: ["Alcalinotérreos"]
         },
         {
           dibujar: false,
@@ -226,6 +227,7 @@ export default {
           num_atomico: 5,
           masa_atomica: 10.8,
           dibujar: true,
+          tags: ["Metaloides"]
         },
         {
           simbolo: "C",
@@ -233,6 +235,7 @@ export default {
           num_atomico: 6,
           masa_atomica: 12.0,
           dibujar: true,
+          tags: ["Otros no metales"]
         },
         {
           simbolo: "N",
@@ -240,6 +243,7 @@ export default {
           num_atomico: 7,
           masa_atomica: 14.0,
           dibujar: true,
+          tags: ["Otros no metales"]
         },
         {
           simbolo: "O",
@@ -247,6 +251,7 @@ export default {
           num_atomico: 8,
           masa_atomica: 15.9,
           dibujar: true,
+          tags: ["Otros no metales"]
         },
         {
           simbolo: "F",
@@ -254,6 +259,7 @@ export default {
           num_atomico: 9,
           masa_atomica: 19.0,
           dibujar: true,
+          tags: ["Halógenos"]
         },
         {
           simbolo: "Ne",
@@ -262,7 +268,7 @@ export default {
           masa_atomica: 20.2,
           dibujar: true,
           estado: "Gaseoso",
-          tags: ["Gases"],
+          tags: ["Gases Nobles"],
           color: "#19d29d"
         },
       ],
@@ -273,6 +279,7 @@ export default {
           num_atomico: 11,
           masa_atomica: 25.0,
           dibujar: true,
+          tags: ['Alcalinos']
         },
         {
           simbolo: "Mg",
@@ -280,7 +287,7 @@ export default {
           num_atomico: 12,
           masa_atomica: 24.3,
           dibujar: true,
-          tags: ["Alcalino"]
+          tags: ["Alcalinotérreos"]
         },
         {
           dibujar: false,
@@ -318,6 +325,7 @@ export default {
           num_atomico: 13,
           masa_atomica: 27.0,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Si",
@@ -325,6 +333,7 @@ export default {
           num_atomico: 14,
           masa_atomica: 18.1,
           dibujar: true,
+          tags: ["Metaloides"]
         },
         {
           simbolo: "P",
@@ -332,6 +341,7 @@ export default {
           num_atomico: 15,
           masa_atomica: 30.97,
           dibujar: true,
+          tags: ["Otros no metales"]
         },
         {
           simbolo: "S",
@@ -339,6 +349,7 @@ export default {
           num_atomico: 16,
           masa_atomica: 30.97,
           dibujar: true,
+          tags: ["Otros no metales"]
         },
         {
           simbolo: "Cl",
@@ -346,6 +357,7 @@ export default {
           num_atomico: 17,
           masa_atomica: 35.453,
           dibujar: true,
+          tags: ["Halógenos"]
         },
         {
           simbolo: "Ar",
@@ -354,7 +366,7 @@ export default {
           masa_atomica: 39.948,
           dibujar: true,
           estado: "Gaseoso",
-          tags: ["Gases"],
+          tags: ["Gases Nobles"],
           color: "#19d29d"
         },
       ],
@@ -365,6 +377,7 @@ export default {
           num_atomico: 19,
           masa_atomica: 39.0983,
           dibujar: true,
+          tags: ['Alcalinos']
         },
         {
           simbolo: "Ca",
@@ -372,7 +385,7 @@ export default {
           num_atomico: 20,
           masa_atomica: 40.078,
           dibujar: true,
-          tags: ["Alcalino"],
+          tags: ["Alcalinotérreos", "En Ecuador"],
           src: "./assets/Ca.jpg",
         },
         {
@@ -421,7 +434,7 @@ export default {
           num_atomico: 26,
           masa_atomica: 55.845,
           dibujar: true,
-          tags: ['Metal Trans'],
+          tags: ['Metal Trans', 'En Ecuador'],
           src: "./assets/Fe.jpg",
         },
         {
@@ -446,7 +459,7 @@ export default {
           num_atomico: 29,
           masa_atomica: 63.546,
           dibujar: true,
-          tags: ['Metal Trans'],
+          tags: ['Metal Trans', 'En Ecuador'],
           src: "./assets/Cu.jpg",
         },
         {
@@ -463,6 +476,7 @@ export default {
           num_atomico: 31,
           masa_atomica: 69.723,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Ge",
@@ -470,6 +484,7 @@ export default {
           num_atomico: 32,
           masa_atomica: 72.64,
           dibujar: true,
+          tags: ["Metaloides"]
         },
         {
           simbolo: "As",
@@ -477,6 +492,7 @@ export default {
           num_atomico: 33,
           masa_atomica: 74.9216,
           dibujar: true,
+          tags: ["Metaloides"]
         },
         {
           simbolo: "Se",
@@ -484,13 +500,15 @@ export default {
           num_atomico: 34,
           masa_atomica: 78.96,
           dibujar: true,
+          tags: ["Otros no metales"]
         },
         {
           simbolo: "Br",
-          nombre: "Bromio",
+          nombre: "Bromo",
           num_atomico: 35,
           masa_atomica: 79.904,
           dibujar: true,
+          tags: ["Halógenos"]
         },
         {
           simbolo: "Kr",
@@ -499,7 +517,7 @@ export default {
           masa_atomica: 83.798,
           dibujar: true,
           estado: "Gaseoso",
-          tags: ["Gases"],
+          tags: ["Gases Nobles"],
           color: "#19d29d"
         },
       ],
@@ -510,6 +528,7 @@ export default {
           num_atomico: 37,
           masa_atomica: 85.4678,
           dibujar: true,
+          tags: ['Alcalinos']
         },
         {
           simbolo: "Sr",
@@ -517,7 +536,7 @@ export default {
           num_atomico: 38,
           masa_atomica: 87.62,
           dibujar: true,
-          tags: ["Alcalino"]
+          tags: ["Alcalinotérreos"]
         },
         {
           simbolo: "Y",
@@ -549,7 +568,7 @@ export default {
           num_atomico: 42,
           masa_atomica: 95.96,
           dibujar: true,
-          tags: ['Metal Trans'],
+          tags: ['Metal Trans', 'En Ecuador'],
           src: "./assets/Mo.jpg",
         },
         {
@@ -590,7 +609,7 @@ export default {
           num_atomico: 47,
           masa_atomica: 107.8682,
           dibujar: true,
-          tags: ['Metal Trans'],
+          tags: ['Metal Trans', 'En Ecuador'],
           src: "./assets/Ag.jpg",
         },
         {
@@ -607,6 +626,7 @@ export default {
           num_atomico: 49,
           masa_atomica: 114.818,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Sn",
@@ -614,6 +634,7 @@ export default {
           num_atomico: 50,
           masa_atomica: 118.71,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Sb",
@@ -621,6 +642,7 @@ export default {
           num_atomico: 51,
           masa_atomica: 121.76,
           dibujar: true,
+          tags: ["Metaloides"]
         },
         {
           simbolo: "Te",
@@ -628,6 +650,7 @@ export default {
           num_atomico: 52,
           masa_atomica: 127.6,
           dibujar: true,
+          tags: ["Metaloides"]
         },
         {
           simbolo: "I",
@@ -635,6 +658,7 @@ export default {
           num_atomico: 53,
           masa_atomica: 126.9044,
           dibujar: true,
+          tags: ["Halógenos"]
         },
         {
           simbolo: "Xe",
@@ -643,7 +667,7 @@ export default {
           masa_atomica: 131.293,
           dibujar: true,
           estado: "Gaseoso",
-          tags: ["Gases"],
+          tags: ["Gases Nobles"],
           color: "#19d29d"
         },
       ],
@@ -654,6 +678,7 @@ export default {
           num_atomico: 55,
           masa_atomica: 132.9054,
           dibujar: true,
+          tags: ['Alcalinos']
         },
         {
           simbolo: "Ba",
@@ -661,7 +686,7 @@ export default {
           num_atomico: 56,
           masa_atomica: 137.327,
           dibujar: true,
-          tags: ["Alcalino"]
+          tags: ["Alcalinotérreos"]
         },
         {
           simbolo: "Lu",
@@ -732,7 +757,7 @@ export default {
           num_atomico: 79,
           masa_atomica: 196.9665,
           dibujar: true,
-          tags: ['Metal Trans'],
+          tags: ['Metal Trans', "En Ecuador"],
           src: "./assets/Au.jpg",
         },
         {
@@ -749,6 +774,7 @@ export default {
           num_atomico: 81,
           masa_atomica: 204.3833,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Pb",
@@ -756,6 +782,7 @@ export default {
           num_atomico: 82,
           masa_atomica: 207.2,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Bi",
@@ -763,6 +790,7 @@ export default {
           num_atomico: 83,
           masa_atomica: 208.9804,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Po",
@@ -770,6 +798,7 @@ export default {
           num_atomico: 84,
           masa_atomica: 210,
           dibujar: true,
+          tags: ["Metaloides"]
         },
         {
           simbolo: "At",
@@ -777,6 +806,7 @@ export default {
           num_atomico: 85,
           masa_atomica: 210,
           dibujar: true,
+          tags: ["Halógenos"]
         },
         {
           simbolo: "Rn",
@@ -785,7 +815,7 @@ export default {
           masa_atomica: 220,
           dibujar: true,
           estado: "Gaseoso",
-          tags: ["Gases"],
+          tags: ["Gases Nobles"],
           color: "#19d29d"
         },
       ],
@@ -796,6 +826,7 @@ export default {
           num_atomico: 87,
           masa_atomica: 223,
           dibujar: true,
+          tags: ['Alcalinos']
         },
         {
           simbolo: "Ra",
@@ -803,7 +834,7 @@ export default {
           num_atomico: 88,
           masa_atomica: 226,
           dibujar: true,
-          tags: ["Alcalino"]
+          tags: ["Alcalinotérreos"]
         },
         {
           simbolo: "Lr",
@@ -890,6 +921,7 @@ export default {
           num_atomico: 113,
           masa_atomica: 284,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Fl",
@@ -897,6 +929,7 @@ export default {
           num_atomico: 114,
           masa_atomica: 289,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Mc",
@@ -904,6 +937,7 @@ export default {
           num_atomico: 115,
           masa_atomica: 288,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Lv",
@@ -911,6 +945,7 @@ export default {
           num_atomico: 116,
           masa_atomica: 292,
           dibujar: true,
+          tags: ["Otros metales"]
         },
         {
           simbolo: "Ts",
@@ -918,6 +953,7 @@ export default {
           num_atomico: 117,
           masa_atomica: 294,
           dibujar: true,
+          tags: ["Halógenos"]
         },
         {
           simbolo: "Og",
@@ -926,12 +962,12 @@ export default {
           masa_atomica: 294,
           dibujar: true,
           estado: "Gaseoso",
-          tags: ["Gases"],
+          tags: ["Gases Nobles"],
           color: "#19d29d"
         },
       ],
     ],
-    groups: ["Metales", "Gases", "Liquidos", "Indeterminado", "En Ecuador", "Alcalino", "Metal Trans"],
+    groups: ["Metales", "Liquidos", "Indeterminado", "En Ecuador", "Alcalinos", "Alcalinotérreos", "Metal Trans", "Otros metales", "Metaloides", "Otros no metales", "Halógenos", "Gases Nobles"],
   }),
   methods: {
     changeSelected (category) {
@@ -941,9 +977,9 @@ export default {
           this.selectedColor = "yellow";
           this.unselectedColor = "gray";
         }
-        else if (category == "Gases"){
+        else if (category == "En Ecuador"){
           this.selectedCategory = category;
-          this.selectedColor = "purple";
+          this.selectedColor = "lime";
           this.unselectedColor = "gray";
         }
         else if (category == "Liquidos"){
@@ -956,7 +992,12 @@ export default {
           this.selectedColor = "yellow";
           this.unselectedColor = "gray";
         }
-        else if (category == "Alcalino"){
+        else if (category == "Alcalinos"){
+          this.selectedCategory = category;
+          this.selectedColor = "blue";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Alcalinotérreos"){
           this.selectedCategory = category;
           this.selectedColor = "yellow";
           this.unselectedColor = "gray";
@@ -964,6 +1005,31 @@ export default {
         else if (category == "Metal Trans"){
           this.selectedCategory = category;
           this.selectedColor = "pink";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Otros metales"){
+          this.selectedCategory = category;
+          this.selectedColor = "teal";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Metaloides"){
+          this.selectedCategory = category;
+          this.selectedColor = "red";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Otros no metales"){
+          this.selectedCategory = category;
+          this.selectedColor = "green";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Halógenos"){
+          this.selectedCategory = category;
+          this.selectedColor = "indigo";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Gases Nobles"){
+          this.selectedCategory = category;
+          this.selectedColor = "purple";
           this.unselectedColor = "gray";
         }
       }
