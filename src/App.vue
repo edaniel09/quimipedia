@@ -1,11 +1,9 @@
 <template>
   <v-app id="app">
     <v-container>
-      <v-row style="margin: auto; padding-left: 1%; padding-right: 1%;">
+      <v-row style="margin: auto; padding-left: 1%; padding-right: 1%">
         <v-col md="2" v-for="category in groups" :key="category">
-          <v-btn 
-          elevation="2"
-          large>
+          <v-btn elevation="2" large @click="changeSelected(category)">
             {{ category }}
           </v-btn>
         </v-col>
@@ -25,7 +23,7 @@
                   dark
                   tile
                   flat
-                  :color="hover ? 'orange' : '#19d29d'"
+                  :color="hover ? 'orange' : getColor(col)"
                   :elevation="hover ? 12 : 0"
                   v-bind="attrs"
                   v-on="on"
@@ -45,55 +43,46 @@
               </v-hover>
             </template>
             <v-card max-width="374">
-              <v-card-text style="text-align: center;">
+              <v-card-text style="text-align: center">
                 <h1>{{ col.nombre }}</h1>
               </v-card-text>
-              
-              <v-img v-if="col.src"
+
+              <v-img
+                v-if="col.src"
                 height="250"
-                :src="require('./assets/'+col.simbolo+'.jpg')"
+                :src="require('./assets/' + col.simbolo + '.jpg')"
               >
-                <v-row style="color: white; font-size: large;" class="v-card-content">
-                <span style="color: white; font-size: large;">{{ col.num_atomico }}</span>
-                <v-card-text>
-                  Nombre Comun: {{ col.nombre }}
-                </v-card-text>
-                <v-card-text>
-                  Serie Quimica: {{ col.nombre }}
-                </v-card-text>
-                <v-card-text>
-                  Estado Natural: {{ col.nombre }}
-                </v-card-text>
-                <v-card-text>
-                  Color: {{ col.nombre }}
-                </v-card-text>
-                <v-card-text>
-                  Numero Atomico: {{ col.nombre }}
-                </v-card-text>
-                <v-card-text>
-                  Grupo: {{ col.nombre }}
-                </v-card-text>
-                <v-card-text>
-                  Dureza: {{ col.nombre }}
-                </v-card-text>
-                <v-card-text>
-                  Masa Atomica: {{ col.nombre }}
-                </v-card-text>
+                <v-row
+                  style="color: white; font-size: large"
+                  class="v-card-content"
+                >
+                  <span style="color: white; font-size: large">{{
+                    col.num_atomico
+                  }}</span>
+                  <v-card-text> Nombre Comun: {{ col.nombre }} </v-card-text>
+                  <v-card-text> Serie Quimica: {{ col.nombre }} </v-card-text>
+                  <v-card-text> Estado Natural: {{ col.nombre }} </v-card-text>
+                  <v-card-text> Color: {{ col.nombre }} </v-card-text>
+                  <v-card-text> Numero Atomico: {{ col.nombre }} </v-card-text>
+                  <v-card-text> Grupo: {{ col.nombre }} </v-card-text>
+                  <v-card-text> Dureza: {{ col.nombre }} </v-card-text>
+                  <v-card-text> Masa Atomica: {{ col.nombre }} </v-card-text>
                 </v-row>
                 <v-row class="v-card-content">
-                <span style="color: white; font-size: large;">{{ col.simbolo }}</span>
+                  <span style="color: white; font-size: large">{{
+                    col.simbolo
+                  }}</span>
                 </v-row>
               </v-img>
               <v-row>
                 <v-card-text>
-                  {{ col.num_atomico }} - {{ col.simbolo }} {{'./assets/'+col.simbolo + '.jpg'}}
+                  {{ col.num_atomico }} - {{ col.simbolo }}
+                  {{ "./assets/" + col.simbolo + ".jpg" }}
                 </v-card-text>
                 <v-card-text>
                   Masa Atomica: {{ col.masa_atomica }}
                 </v-card-text>
-                <v-card-text>
-                  Fase: {{ col.nombre }}
-                </v-card-text>
+                <v-card-text> Fase: {{ col.nombre }} </v-card-text>
               </v-row>
             </v-card>
           </v-tooltip>
@@ -111,6 +100,9 @@
 export default {
   name: "App",
   data: () => ({
+    selectedColor: 'red',
+    unselectedColor: "#19d29d",
+    selectedCategory: null,
     qelements: [
       [
         {
@@ -119,6 +111,9 @@ export default {
           num_atomico: 1,
           masa_atomica: 1.0,
           dibujar: true,
+          estado: "Gaseoso",
+          tags: ["Gases"],
+          color: "#19d29d"
         },
         {
           dibujar: false,
@@ -174,6 +169,9 @@ export default {
           num_atomico: 2,
           masa_atomica: 4.0,
           dibujar: true,
+          tags: ["Gases"],
+          estado: "Gaseoso",
+          color: "#19d29d"
         },
       ],
       [
@@ -190,6 +188,7 @@ export default {
           num_atomico: 4,
           masa_atomica: 9.0,
           dibujar: true,
+          tags: ["Alcalino"]
         },
         {
           dibujar: false,
@@ -262,6 +261,9 @@ export default {
           num_atomico: 10,
           masa_atomica: 20.2,
           dibujar: true,
+          estado: "Gaseoso",
+          tags: ["Gases"],
+          color: "#19d29d"
         },
       ],
       [
@@ -278,6 +280,7 @@ export default {
           num_atomico: 12,
           masa_atomica: 24.3,
           dibujar: true,
+          tags: ["Alcalino"]
         },
         {
           dibujar: false,
@@ -350,6 +353,9 @@ export default {
           num_atomico: 18,
           masa_atomica: 39.948,
           dibujar: true,
+          estado: "Gaseoso",
+          tags: ["Gases"],
+          color: "#19d29d"
         },
       ],
       [
@@ -366,7 +372,8 @@ export default {
           num_atomico: 20,
           masa_atomica: 40.078,
           dibujar: true,
-          src: './assets/Ca.jpg'
+          tags: ["Alcalino"],
+          src: "./assets/Ca.jpg",
         },
         {
           simbolo: "Sc",
@@ -374,6 +381,7 @@ export default {
           num_atomico: 21,
           masa_atomica: 44.95591,
           dibujar: true,
+          tags: ["Metal Trans"]
         },
         {
           simbolo: "Ti",
@@ -381,6 +389,7 @@ export default {
           num_atomico: 22,
           masa_atomica: 47.867,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "V",
@@ -388,6 +397,7 @@ export default {
           num_atomico: 23,
           masa_atomica: 50.9415,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Cr",
@@ -395,6 +405,7 @@ export default {
           num_atomico: 24,
           masa_atomica: 51.9962,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Mn",
@@ -402,6 +413,7 @@ export default {
           num_atomico: 25,
           masa_atomica: 54.93804,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Fe",
@@ -409,7 +421,8 @@ export default {
           num_atomico: 26,
           masa_atomica: 55.845,
           dibujar: true,
-          src: './assets/Fe.jpg'
+          tags: ['Metal Trans'],
+          src: "./assets/Fe.jpg",
         },
         {
           simbolo: "Co",
@@ -417,6 +430,7 @@ export default {
           num_atomico: 27,
           masa_atomica: 58.93319,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Ni",
@@ -424,6 +438,7 @@ export default {
           num_atomico: 28,
           masa_atomica: 58.6934,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Cu",
@@ -431,7 +446,8 @@ export default {
           num_atomico: 29,
           masa_atomica: 63.546,
           dibujar: true,
-          src: './assets/Cu.jpg'
+          tags: ['Metal Trans'],
+          src: "./assets/Cu.jpg",
         },
         {
           simbolo: "Zn",
@@ -439,6 +455,7 @@ export default {
           num_atomico: 30,
           masa_atomica: 65.38,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Ga",
@@ -481,6 +498,9 @@ export default {
           num_atomico: 36,
           masa_atomica: 83.798,
           dibujar: true,
+          estado: "Gaseoso",
+          tags: ["Gases"],
+          color: "#19d29d"
         },
       ],
       [
@@ -497,6 +517,7 @@ export default {
           num_atomico: 38,
           masa_atomica: 87.62,
           dibujar: true,
+          tags: ["Alcalino"]
         },
         {
           simbolo: "Y",
@@ -504,6 +525,7 @@ export default {
           num_atomico: 39,
           masa_atomica: 88.90585,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Zr",
@@ -511,6 +533,7 @@ export default {
           num_atomico: 40,
           masa_atomica: 91.224,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Nb",
@@ -518,6 +541,7 @@ export default {
           num_atomico: 41,
           masa_atomica: 92.90638,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Mo",
@@ -525,7 +549,8 @@ export default {
           num_atomico: 42,
           masa_atomica: 95.96,
           dibujar: true,
-          src: './assets/Mo.jpg'
+          tags: ['Metal Trans'],
+          src: "./assets/Mo.jpg",
         },
         {
           simbolo: "Tc",
@@ -533,6 +558,7 @@ export default {
           num_atomico: 43,
           masa_atomica: 98,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Ru",
@@ -540,6 +566,7 @@ export default {
           num_atomico: 44,
           masa_atomica: 101.07,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Rh",
@@ -547,6 +574,7 @@ export default {
           num_atomico: 45,
           masa_atomica: 102.9055,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Pd",
@@ -554,6 +582,7 @@ export default {
           num_atomico: 46,
           masa_atomica: 106.42,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Ag",
@@ -561,7 +590,8 @@ export default {
           num_atomico: 47,
           masa_atomica: 107.8682,
           dibujar: true,
-          src: './assets/Ag.jpg'
+          tags: ['Metal Trans'],
+          src: "./assets/Ag.jpg",
         },
         {
           simbolo: "Cd",
@@ -569,6 +599,7 @@ export default {
           num_atomico: 48,
           masa_atomica: 112.441,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "In",
@@ -611,6 +642,9 @@ export default {
           num_atomico: 54,
           masa_atomica: 131.293,
           dibujar: true,
+          estado: "Gaseoso",
+          tags: ["Gases"],
+          color: "#19d29d"
         },
       ],
       [
@@ -627,6 +661,7 @@ export default {
           num_atomico: 56,
           masa_atomica: 137.327,
           dibujar: true,
+          tags: ["Alcalino"]
         },
         {
           simbolo: "Lu",
@@ -641,6 +676,7 @@ export default {
           num_atomico: 72,
           masa_atomica: 178.49,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Ta",
@@ -648,6 +684,7 @@ export default {
           num_atomico: 73,
           masa_atomica: 180.9478,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "W",
@@ -655,6 +692,7 @@ export default {
           num_atomico: 74,
           masa_atomica: 183.84,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Re",
@@ -662,6 +700,7 @@ export default {
           num_atomico: 75,
           masa_atomica: 186.207,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Os",
@@ -669,6 +708,7 @@ export default {
           num_atomico: 76,
           masa_atomica: 190.23,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Ir",
@@ -676,6 +716,7 @@ export default {
           num_atomico: 77,
           masa_atomica: 192.217,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Pt",
@@ -683,14 +724,16 @@ export default {
           num_atomico: 78,
           masa_atomica: 195.084,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
-          simbolo: 'Au',
-          nombre: 'Oro',
+          simbolo: "Au",
+          nombre: "Oro",
           num_atomico: 79,
           masa_atomica: 196.9665,
           dibujar: true,
-          src: './assets/Au.jpg'
+          tags: ['Metal Trans'],
+          src: "./assets/Au.jpg",
         },
         {
           simbolo: "Hg",
@@ -698,6 +741,7 @@ export default {
           num_atomico: 80,
           masa_atomica: 200.59,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Tl",
@@ -740,6 +784,9 @@ export default {
           num_atomico: 86,
           masa_atomica: 220,
           dibujar: true,
+          estado: "Gaseoso",
+          tags: ["Gases"],
+          color: "#19d29d"
         },
       ],
       [
@@ -756,6 +803,7 @@ export default {
           num_atomico: 88,
           masa_atomica: 226,
           dibujar: true,
+          tags: ["Alcalino"]
         },
         {
           simbolo: "Lr",
@@ -770,6 +818,7 @@ export default {
           num_atomico: 104,
           masa_atomica: 261,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Db",
@@ -777,6 +826,7 @@ export default {
           num_atomico: 105,
           masa_atomica: 262,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Sg",
@@ -784,6 +834,7 @@ export default {
           num_atomico: 106,
           masa_atomica: 266,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Bh",
@@ -791,6 +842,7 @@ export default {
           num_atomico: 107,
           masa_atomica: 264,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Hs",
@@ -798,6 +850,7 @@ export default {
           num_atomico: 108,
           masa_atomica: 277,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Mt",
@@ -805,6 +858,7 @@ export default {
           num_atomico: 109,
           masa_atomica: 268,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Ds",
@@ -812,6 +866,7 @@ export default {
           num_atomico: 110,
           masa_atomica: 271,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Rg",
@@ -819,6 +874,7 @@ export default {
           num_atomico: 111,
           masa_atomica: 272,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Cn",
@@ -826,6 +882,7 @@ export default {
           num_atomico: 112,
           masa_atomica: 285,
           dibujar: true,
+          tags: ['Metal Trans']
         },
         {
           simbolo: "Nh",
@@ -868,17 +925,66 @@ export default {
           num_atomico: 118,
           masa_atomica: 294,
           dibujar: true,
+          estado: "Gaseoso",
+          tags: ["Gases"],
+          color: "#19d29d"
         },
       ],
     ],
-    groups: [
-      'Metales',
-      'Gases',
-      'Liquidos',
-      'Indeterminado',
-      'En Ecuador'
-    ]
+    groups: ["Metales", "Gases", "Liquidos", "Indeterminado", "En Ecuador", "Alcalino", "Metal Trans"],
   }),
+  methods: {
+    changeSelected (category) {
+      if (this.selectedCategory != category){
+        if (category == "Metales"){
+          this.selectedCategory = category;
+          this.selectedColor = "yellow";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Gases"){
+          this.selectedCategory = category;
+          this.selectedColor = "purple";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Liquidos"){
+          this.selectedCategory = category;
+          this.selectedColor = "yellow";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Indeterminado"){
+          this.selectedCategory = category;
+          this.selectedColor = "yellow";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Alcalino"){
+          this.selectedCategory = category;
+          this.selectedColor = "yellow";
+          this.unselectedColor = "gray";
+        }
+        else if (category == "Metal Trans"){
+          this.selectedCategory = category;
+          this.selectedColor = "pink";
+          this.unselectedColor = "gray";
+        }
+      }
+      else {
+        this.selectedCategory = null;
+        this.selectedColor = "#19d29d";
+        this.unselectedColor =  "#19d29d";
+      }
+    },
+    getColor (col) {
+      /*if(this.selectedCategory == null){
+        return col.color;
+      }*/
+      if (col.tags){
+        if (col.tags.indexOf(this.selectedCategory) >= 0){
+          return this.selectedColor;
+        }
+      }
+      return this.unselectedColor;
+    }
+  }
 };
 </script>
 
@@ -908,10 +1014,10 @@ export default {
 }
 
 .v-card-content {
-  display: flex; 
-  width: 100%; 
-  margin: auto; 
-  align-items: center; 
+  display: flex;
+  width: 100%;
+  margin: auto;
+  align-items: center;
   justify-content: center;
 }
 </style>
