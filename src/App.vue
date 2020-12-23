@@ -1,6 +1,15 @@
 <template>
   <v-app id="app">
     <v-container>
+      <v-row style="margin: auto; padding-left: 1%; padding-right: 1%;">
+        <v-col md="2" v-for="category in groups" :key="category">
+          <v-btn 
+          elevation="2"
+          large>
+            {{ category }}
+          </v-btn>
+        </v-col>
+      </v-row>
       <v-row
         wrap
         no-gutters
@@ -39,10 +48,42 @@
               <v-card-text style="text-align: center;">
                 <h1>{{ col.nombre }}</h1>
               </v-card-text>
+              
               <v-img v-if="col.src"
                 height="250"
-                :src="'./src/assets/Au.jpg'"
-              ></v-img>
+                :src="require('./assets/'+col.simbolo+'.jpg')"
+              >
+                <v-row style="color: white; font-size: large;" class="v-card-content">
+                <span style="color: white; font-size: large;">{{ col.num_atomico }}</span>
+                <v-card-text>
+                  Nombre Comun: {{ col.nombre }}
+                </v-card-text>
+                <v-card-text>
+                  Serie Quimica: {{ col.nombre }}
+                </v-card-text>
+                <v-card-text>
+                  Estado Natural: {{ col.nombre }}
+                </v-card-text>
+                <v-card-text>
+                  Color: {{ col.nombre }}
+                </v-card-text>
+                <v-card-text>
+                  Numero Atomico: {{ col.nombre }}
+                </v-card-text>
+                <v-card-text>
+                  Grupo: {{ col.nombre }}
+                </v-card-text>
+                <v-card-text>
+                  Dureza: {{ col.nombre }}
+                </v-card-text>
+                <v-card-text>
+                  Masa Atomica: {{ col.nombre }}
+                </v-card-text>
+                </v-row>
+                <v-row class="v-card-content">
+                <span style="color: white; font-size: large;">{{ col.simbolo }}</span>
+                </v-row>
+              </v-img>
               <v-row>
                 <v-card-text>
                   {{ col.num_atomico }} - {{ col.simbolo }} {{'./assets/'+col.simbolo + '.jpg'}}
@@ -325,6 +366,7 @@ export default {
           num_atomico: 20,
           masa_atomica: 40.078,
           dibujar: true,
+          src: './assets/Ca.jpg'
         },
         {
           simbolo: "Sc",
@@ -367,6 +409,7 @@ export default {
           num_atomico: 26,
           masa_atomica: 55.845,
           dibujar: true,
+          src: './assets/Fe.jpg'
         },
         {
           simbolo: "Co",
@@ -388,6 +431,7 @@ export default {
           num_atomico: 29,
           masa_atomica: 63.546,
           dibujar: true,
+          src: './assets/Cu.jpg'
         },
         {
           simbolo: "Zn",
@@ -481,6 +525,7 @@ export default {
           num_atomico: 42,
           masa_atomica: 95.96,
           dibujar: true,
+          src: './assets/Mo.jpg'
         },
         {
           simbolo: "Tc",
@@ -516,6 +561,7 @@ export default {
           num_atomico: 47,
           masa_atomica: 107.8682,
           dibujar: true,
+          src: './assets/Ag.jpg'
         },
         {
           simbolo: "Cd",
@@ -825,6 +871,13 @@ export default {
         },
       ],
     ],
+    groups: [
+      'Metales',
+      'Gases',
+      'Liquidos',
+      'Indeterminado',
+      'En Ecuador'
+    ]
   }),
 };
 </script>
@@ -852,5 +905,13 @@ export default {
 .v-tooltip__content {
   font-size: 50px !important;
   background-color: white;
+}
+
+.v-card-content {
+  display: flex; 
+  width: 100%; 
+  margin: auto; 
+  align-items: center; 
+  justify-content: center;
 }
 </style>
