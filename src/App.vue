@@ -24,7 +24,8 @@
         </v-row>
       </v-container>
       <br />
-      <v-container fluid>
+      <v-row>
+      <v-container >
         <v-row
           wrap
           no-gutters
@@ -141,12 +142,18 @@
           </v-col>
         </v-row>
       </v-container>
+      <questions></questions>
+      </v-row>
     </v-container>
   </v-app>
 </template>
 
 <script>
+import Questions from './components/Questions.vue'
 export default {
+  components: {
+    Questions
+  },
   name: "App",
   data: () => ({
     selectedColor: "red",
@@ -1742,7 +1749,7 @@ export default {
   margin: auto;
 }
 
-.background {
+/* .background {
   background-color: rgb(160, 175, 189);
-}
+} */
 </style>
