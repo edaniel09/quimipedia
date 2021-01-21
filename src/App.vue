@@ -2,30 +2,10 @@
   <v-app id="app">
     <v-container fluid style="height: 100vh" class="background">
       <h1 style="color: yellow;">QUIMIPEDIA</h1>
-      <v-container>
-        <v-row style="margin: auto; padding-left: 1%; padding-right: 1%">
-          <v-col
-            align-self="auto"
-            md="2"
-            v-for="category in groups"
-            :key="category"
-          >
-            <v-flex>
-              <v-btn
-                elevation="2"
-                small
-                style="color: #8B008B"
-                @click="changeSelected(category)"
-                color="cyan"
-              >
-                {{ category }}
-              </v-btn>
-            </v-flex>
-          </v-col>
-        </v-row>
-      </v-container>
+      <categories 
+      :groups="groups"
+      @change="changeCategory"></categories>
       <br />
-      
       <v-row class="background">
       <v-container style="width:75%">
         <v-col md=12 style="width:100%;">
@@ -61,13 +41,13 @@
                   >
                     <v-card-text>
                       <div class="el-num-atom">
-                        {{ col.num_atomico }}
+                          {{   col.num_atomico   }}  
                       </div>
                       <div class="el-simbolo">
-                        {{ col.simbolo }}
+                          {{   col.simbolo   }}  
                       </div>
                       <div class="el-nombre text-no-wrap">
-                        {{ col.nombre }}
+                          {{   col.nombre   }}  
                       </div>
                     </v-card-text>
                   </v-card></div>
@@ -87,26 +67,26 @@
                         width="250"
                         :src="require('./assets/' + col.simbolo + '.jpg')"
                       >
-                      
-                      </v-img>
-                      </v-col>
                       <v-col>
-                      <div >
+                      <div style="background-color: white; opacity: 60%;">
                         <v-row
-                          style="color: black; font-size: large;"
+                          style="color: black; font-size: x-large;"
                           class="v-card-content"
                         >
-                          <span style="color: black; font-size: large">{{
+                          <b style="color: black; font-size: x-large">{{
                             col.num_atomico
-                          }}</span>
+                          }}</b>
                         </v-row>
                         <v-row class="v-card-content">
-                          <span style="color: black; font-size: large">{{
+                          <b style="color: black; font-size: x-large">{{
                             col.simbolo
-                          }}</span>
+                          }}</b>
                         </v-row>
                       </div>
                       </v-col>
+                      </v-img>
+                      </v-col>
+                      
                     </v-row>
                     <v-row> </v-row>
                   </v-col>
@@ -150,25 +130,22 @@
                 </v-row>
               </v-card>
             </v-tooltip>
-
-            <!-- <v-card tile flat v-else>
-            <v-card-text></v-card-text>
-          </v-card> -->
           </v-col>
         </v-row>
         </v-col>
       </v-container>
       </v-row>
-      
     </v-container>
   </v-app>
 </template>
 
 <script>
 import Questions from './components/Questions.vue'
+import Categories from './components/Categories.vue'
 export default {
   components: {
-    Questions
+    Questions,
+    Categories
   },
   name: "App",
   data: () => ({
@@ -1651,62 +1628,8 @@ export default {
     ],
   }),
   methods: {
-    changeSelected(category) {
-      if (this.selectedCategory != category) {
-        if (category == "Metales") {
-          this.selectedCategory = category;
-          this.selectedColor = "amber";
-          this.unselectedColor = "grey";
-        } else if (category == "En Ecuador") {
-          this.selectedCategory = category;
-          this.selectedColor = "lime";
-          this.unselectedColor = "grey";
-        } else if (category == "Liquidos") {
-          this.selectedCategory = category;
-          this.selectedColor = "amber";
-          this.unselectedColor = "grey";
-        } else if (category == "Indeterminado") {
-          this.selectedCategory = category;
-          this.selectedColor = "amber";
-          this.unselectedColor = "grey";
-        } else if (category == "Alcalinos") {
-          this.selectedCategory = category;
-          this.selectedColor = "blue";
-          this.unselectedColor = "grey";
-        } else if (category == "Alcalinotérreos") {
-          this.selectedCategory = category;
-          this.selectedColor = "amber";
-          this.unselectedColor = "grey";
-        } else if (category == "Metales Transitorios") {
-          this.selectedCategory = category;
-          this.selectedColor = "pink";
-          this.unselectedColor = "grey";
-        } else if (category == "Otros metales") {
-          this.selectedCategory = category;
-          this.selectedColor = "teal";
-          this.unselectedColor = "grey";
-        } else if (category == "Metaloides") {
-          this.selectedCategory = category;
-          this.selectedColor = "red";
-          this.unselectedColor = "grey";
-        } else if (category == "Otros no metales") {
-          this.selectedCategory = category;
-          this.selectedColor = "green";
-          this.unselectedColor = "grey";
-        } else if (category == "Halógenos") {
-          this.selectedCategory = category;
-          this.selectedColor = "indigo";
-          this.unselectedColor = "grey";
-        } else if (category == "Gases Nobles") {
-          this.selectedCategory = category;
-          this.selectedColor = "purple";
-          this.unselectedColor = "grey";
-        }
-      } else {
-        this.selectedCategory = null;
-        this.selectedColor = "#19d29d";
-        this.unselectedColor = "#19d29d";
-      }
+    changeCategory(category) {
+      this.selectedCategory = category
     },
     getColor(col) {
       if (this.selectedCategory == null) {

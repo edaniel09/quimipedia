@@ -7,7 +7,7 @@
             <v-btn style="margin: 10px;" small color="primary" @click="responder(false, preguntas[idxPregunta].respuesta)">Falso</v-btn>
         </div>
         <div v-else>
-            <p v-if="estado == 'correcto'" style="color: green;font-size: 30px;">Contestaste bien!</p>
+            <p v-if="estado == 'correcto'" style="color: lime;font-size: 30px;">Contestaste bien!</p>
             <p v-else style="color: red; font-size: 30px;">Te equivocaste!</p>
             <p>{{ preguntas[idxPregunta].dato }}</p>
             <v-btn @click="escogerPregunta">Siguiente</v-btn>
