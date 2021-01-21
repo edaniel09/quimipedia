@@ -1,6 +1,7 @@
 <template>
   <v-app id="app">
     <v-container fluid style="height: 100vh" class="background">
+      <h1 style="color: yellow;">QUIMIPEDIA</h1>
       <v-container>
         <v-row style="margin: auto; padding-left: 1%; padding-right: 1%">
           <v-col
@@ -13,7 +14,7 @@
               <v-btn
                 elevation="2"
                 small
-                style="color: white"
+                style="color: #8B008B"
                 @click="changeSelected(category)"
                 color="cyan"
               >
@@ -42,6 +43,7 @@
             <v-tooltip right open-delay="400">
               <template v-slot:activator="{ on, attrs }">
                 <v-hover v-if="col.dibujar" v-slot="{ hover }">
+                  <div class="bordeado">
                   <v-card
                     dark
                     tile
@@ -50,6 +52,7 @@
                     :elevation="hover ? 12 : 0"
                     v-bind="attrs"
                     v-on="on"
+                    outlined                    
                   >
                     <v-card-text>
                       <div class="el-num-atom">
@@ -62,7 +65,7 @@
                         {{ col.nombre }}
                       </div>
                     </v-card-text>
-                  </v-card>
+                  </v-card></div>
                 </v-hover>
               </template>
               <v-card max-width="500" min-width="374" flat>
@@ -1710,11 +1713,13 @@ export default {
 <style scoped>
 .el-nombre {
   font-size: 55%;
+  color: black;
 }
 
 .el-num-atom {
   font-size: 70%;
   text-align: center;
+  color: black;
 }
 
 .el-simbolo {
@@ -1749,7 +1754,12 @@ export default {
   margin: auto;
 }
 
-/* .background {
-  background-color: rgb(160, 175, 189);
-} */
+.bordeado {
+  border:1px solid black;
+}
+
+ .background {
+  background-color: 
+  #9370DB
+} 
 </style>

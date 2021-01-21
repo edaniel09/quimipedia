@@ -1,7 +1,7 @@
 <template>
     <div style="min-width: 30%; max-width: 30%;">
-        <h2>Trivia!</h2>
-        <h3>{{ preguntas[idxPregunta].enunciado }}</h3>
+        <h2  style="color: white;">Trivia!</h2>
+        <h3  style="color: white;">{{ preguntas[idxPregunta].enunciado }}</h3>
         <div v-if="estado == 'pregunta'">
             <v-btn style="margin: 10px;" small color="primary" @click="responder(true, preguntas[idxPregunta].respuesta)">Verdadero</v-btn>
             <v-btn style="margin: 10px;" small color="primary" @click="responder(false, preguntas[idxPregunta].respuesta)">Falso</v-btn>
