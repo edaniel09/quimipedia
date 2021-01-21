@@ -25,8 +25,13 @@
         </v-row>
       </v-container>
       <br />
-      <v-row>
-      <v-container >
+      
+      <v-row class="background">
+      <v-container style="width:75%">
+        <v-col md=12 style="width:100%;">
+        <questions></questions>
+        </v-col>
+        <v-col md="12">
         <v-row
           wrap
           no-gutters
@@ -68,33 +73,40 @@
                   </v-card></div>
                 </v-hover>
               </template>
-              <v-card max-width="500" min-width="374" flat>
+              <v-card max-width="600" min-width="500" flat>
                 <v-card-text style="text-align: center">
                   <h1>{{ col.nombre }}</h1>
                 </v-card-text>
                 <v-row>
                   <v-col>
                     <v-row>
+                      <v-col>
                       <v-img
                         v-if="col.src"
                         height="250"
                         width="250"
                         :src="require('./assets/' + col.simbolo + '.jpg')"
                       >
+                      
+                      </v-img>
+                      </v-col>
+                      <v-col>
+                      <div >
                         <v-row
-                          style="color: white; font-size: large"
+                          style="color: black; font-size: large;"
                           class="v-card-content"
                         >
-                          <span style="color: white; font-size: large">{{
+                          <span style="color: black; font-size: large">{{
                             col.num_atomico
                           }}</span>
                         </v-row>
                         <v-row class="v-card-content">
-                          <span style="color: white; font-size: large">{{
+                          <span style="color: black; font-size: large">{{
                             col.simbolo
                           }}</span>
                         </v-row>
-                      </v-img>
+                      </div>
+                      </v-col>
                     </v-row>
                     <v-row> </v-row>
                   </v-col>
@@ -144,9 +156,10 @@
           </v-card> -->
           </v-col>
         </v-row>
+        </v-col>
       </v-container>
-      <questions></questions>
       </v-row>
+      
     </v-container>
   </v-app>
 </template>
@@ -1746,7 +1759,7 @@ export default {
 }
 
 .description {
-  font-size: small;
+  font-size: medium;
 }
 
 .move-right {
@@ -1759,7 +1772,6 @@ export default {
 }
 
  .background {
-  background-color: 
-  #9370DB
+  background-color: #9370DB;
 } 
 </style>

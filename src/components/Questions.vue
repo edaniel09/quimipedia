@@ -1,5 +1,5 @@
 <template>
-    <div style="min-width: 30%; max-width: 30%;">
+    <div style="min-width: 100%; max-width: 100%;">
         <h2  style="color: white;">Trivia!</h2>
         <h3  style="color: white;">{{ preguntas[idxPregunta].enunciado }}</h3>
         <div v-if="estado == 'pregunta'">
