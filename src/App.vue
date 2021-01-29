@@ -1,17 +1,19 @@
 <template>
   <v-app id="app">
     <v-container fluid style="height: 100vh" class="background">
-      <h1 style="color: yellow;">QUIMIPEDIA</h1>
+      <!-- <h1 style="color: yellow;">QUIMIPEDIA</h1> -->
+      <v-img 
+      src="./assets/qm.png"
+      max-height="100px"
+      max-width="200px"></v-img> 
       <categories 
       :groups="groups"
       @change="changeCategory"></categories>
       <br />
       <v-row class="background">
-      <v-container style="width:75%">
-        <v-col md=12 style="width:100%;">
-        <questions></questions>
-        </v-col>
-        <v-col md="12">
+      <v-container fluid style="width:100%">
+        <v-layout>
+        <v-col md="9">
         <v-row
           wrap
           no-gutters
@@ -133,6 +135,10 @@
           </v-col>
         </v-row>
         </v-col>
+        <v-col md="3" style="width:100%;">
+        <questions></questions>
+        </v-col>
+        </v-layout>
       </v-container>
       </v-row>
     </v-container>
@@ -904,6 +910,21 @@ export default {
           dibujar: true,
           tags: ["Metales Transitorios"],
           color: "pink",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal de transición",
+          estado_natural: "Sólido",
+          color_info: "Blanco azulado",
+          grupo: "9",
+          dureza: "4",
+          electronegatividad: "1.88",
+          estado_de_oxidacion: "-1, 1, 2, 3, 4, 5",
+          minerales_asoc:
+            "Cobaltitas, carrolita, linneita (foto)",
+          ubicacion_mundial: "Estados Unidos, Alemania, Suecia ",
+          tipo_exploracion: "Cielo abierto",
+          demanda: "Alta",
+          utilidad:
+            "Superaleaciones para turbinas de gas, aleaciones para corrosión, imanes, secante para pinturas y barnices, pigmentos, electrodos de baterías eléctricas, cables de acero de neumáticos.",
         },
         {
           simbolo: "Ni",
@@ -1057,6 +1078,21 @@ export default {
           dibujar: true,
           tags: ["Otros no metales"],
           color: "green",
+          src: "./assets/Se.jpg",
+          serie_quimica: "No metal",
+          estado_natural: "Sólido",
+          color_info: "Blanco plateado",
+          grupo: "16",
+          dureza: "2",
+          electronegatividad: "2.48",
+          estado_de_oxidacion: "-2, 2, 4, 6",
+          minerales_asoc:
+            "Rocas y suelo de toda la tierra",
+          ubicacion_mundial: "Alrededor del planeta",
+          tipo_exploracion: "Cielo abierto",
+          demanda: "Baja – Media",
+          utilidad:
+            "Fabricación de vidrio, tratamiento para la dermatitis.",
         },
         {
           simbolo: "Br",
@@ -1066,6 +1102,21 @@ export default {
           dibujar: true,
           tags: ["Halógenos"],
           color: "indigo",
+          src: "./assets/Br.jpg",
+          serie_quimica: "Halógeno",
+          estado_natural: "Líquido",
+          color_info: "Blanco plateado",
+          grupo: "17",
+          dureza: "N/A",
+          electronegatividad: "2.96",
+          estado_de_oxidacion: "+/- 1, 3, 5, 7",
+          minerales_asoc:
+            "Agua de mar",
+          ubicacion_mundial: "Estados Unidos, Israel",
+          tipo_exploracion: "N/A",
+          demanda: "Baja",
+          utilidad:
+            "Aplicaciones químicas e industriales, sedantes, placas fotográficas.",
         },
         {
           simbolo: "Kr",
@@ -1076,6 +1127,21 @@ export default {
           estado: "Gaseoso",
           tags: ["Gases Nobles"],
           color: "purple",
+          src: "./assets/Kr.jpg",
+          serie_quimica: "Gas noble",
+          estado_natural: "Gaseoso",
+          color_info: "Incoloro",
+          grupo: "18",
+          dureza: "N/A",
+          electronegatividad: "3.00",
+          estado_de_oxidacion: "0",
+          minerales_asoc:
+            "N/A",
+          ubicacion_mundial: "Atmósfera del planeta",
+          tipo_exploracion: "N/A",
+          demanda: "Media",
+          utilidad:
+            "Anestesia (alto riesgo), fotografía, lámparas de flash, proyectores de alta definición, fabricación de circuitos.",
         },
       ],
       [
@@ -1087,6 +1153,21 @@ export default {
           dibujar: true,
           tags: ["Alcalinos"],
           color: "blue",
+          src: "./assets/Rb.jpg",
+          serie_quimica: "Metal alcalino",
+          estado_natural: "Sólido",
+          color_info: "Plateado blanquecino",
+          grupo: "1",
+          dureza: "0.3",
+          electronegatividad: "0.82",
+          estado_de_oxidacion: "1",
+          minerales_asoc:
+            "Leucita, polucita, zinwaldita, lepidolita (foto)",
+          ubicacion_mundial: "Superficie de todo el planeta",
+          tipo_exploracion: "Cielo abierto, subterránea",
+          demanda: "Media",
+          utilidad:
+            "Motores iónicos para naves espaciales, recubrimientos fotoemisores, componente de fotorresistencias, tomografías de emisión de positrones, turbinas de vapor.",
         },
         {
           simbolo: "Sr",
@@ -1096,6 +1177,21 @@ export default {
           dibujar: true,
           tags: ["Alcalinotérreos"],
           color: "amber",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal alcalinotérreo",
+          estado_natural: "Sólido",
+          color_info: "Plateado brillante",
+          grupo: "2",
+          dureza: "1.5",
+          electronegatividad: "0.95",
+          estado_de_oxidacion: "2",
+          minerales_asoc:
+            "Celestina, estroncianita, estroncita",
+          ubicacion_mundial: "China, España, México, Turquía, Argentina, Irán, Inglaterra",
+          tipo_exploracion: "Cielo abierto",
+          demanda: "Media",
+          utilidad:
+            "Pirotecnia, imanes, refinamiento del zinc, producción de vidrios, cerámicas, pigmentos para pinturas, terapia para el cáncer, tratamiento de osteoporosis.",
         },
         {
           simbolo: "Y",
@@ -1105,6 +1201,21 @@ export default {
           dibujar: true,
           tags: ["Metales Transitorios"],
           color: "pink",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal de transición",
+          estado_natural: "Sólido",
+          color_info: "Blanco plateado",
+          grupo: "3",
+          dureza: "5",
+          electronegatividad: "1.22",
+          estado_de_oxidacion: "2",
+          minerales_asoc:
+            "Gadolinita",
+          ubicacion_mundial: "Noruega, Suecia, Estados Unidos",
+          tipo_exploracion: "Cielo abierto",
+          demanda: "Media",
+          utilidad:
+            "Refrigerante en motores de aviones, recubrimiento en turbinas de gas, electro cerámica, producción de células de combustible, joyería, cuchillos no metálicos.",
         },
         {
           simbolo: "Zr",
@@ -1114,6 +1225,21 @@ export default {
           dibujar: true,
           tags: ["Metales Transitorios"],
           color: "pink",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal de transición",
+          estado_natural: "Sólido",
+          color_info: "Plateado brillante",
+          grupo: "4",
+          dureza: "3",
+          electronegatividad: "1.33",
+          estado_de_oxidacion: "4",
+          minerales_asoc:
+            "Rocas silíceas, granito, circón",
+          ubicacion_mundial: "Australia, Brasil, India, Rusia, Estados Unidos",
+          tipo_exploracion: "Cielo abierto y Subterráneo",
+          demanda: "Media – Alta",
+          utilidad:
+            "Reactores nucleares, aditivo de aceros, aleaciones con níquel, crisoles de laboratorio, intercambiadores de calor, elementos superconductores, joyería, arenas sintéticas.",
         },
         {
           simbolo: "Nb",
@@ -1123,6 +1249,21 @@ export default {
           dibujar: true,
           tags: ["Metales Transitorios"],
           color: "pink",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal de transición",
+          estado_natural: "Sólido",
+          color_info: "Gris metálico",
+          grupo: "5",
+          dureza: "6",
+          electronegatividad: "1.6",
+          estado_de_oxidacion: "5",
+          minerales_asoc:
+            "Columbita (foto), euxenita, samarskita, fergunosita",
+          ubicacion_mundial: "Brasil",
+          tipo_exploracion: "Cielo abierto y Subterráneo",
+          demanda: "Media",
+          utilidad:
+            "Componente de acero inoxidable, aleación con titanio para imanes superconductores, lentes y pantallas de cristal, lámparas de vapor de sodio, joyería, fabricación de monedas bimetálicas.",
         },
         {
           simbolo: "Mo",
@@ -1156,6 +1297,21 @@ export default {
           dibujar: true,
           tags: ["Metales Transitorios"],
           color: "pink",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal de transición",
+          estado_natural: "Sólido",
+          color_info: "Gris plateado",
+          grupo: "7",
+          dureza: "N/A",
+          electronegatividad: "1.9",
+          estado_de_oxidacion: "1, 3, 4, 5, 6, 7",
+          minerales_asoc:
+            "N/A",
+          ubicacion_mundial: "N/A",
+          tipo_exploracion: "N/A",
+          demanda: "Baja",
+          utilidad:
+            "Medicina nuclear, aplicaciones industriales, catalizador, protección para hierros y aceros para corrosión.",
         },
         {
           simbolo: "Ru",
@@ -1165,6 +1321,21 @@ export default {
           dibujar: true,
           tags: ["Metales Transitorios"],
           color: "pink",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal de transición",
+          estado_natural: "Sólido",
+          color_info: "Blanco grisáceo",
+          grupo: "8",
+          dureza: "6.5",
+          electronegatividad: "2.2",
+          estado_de_oxidacion: "2",
+          minerales_asoc:
+            "Laurita, anduorita, platarsita, pentladita (foto)",
+          ubicacion_mundial: "Región de los Montes Urales",
+          tipo_exploracion: "Cielo abierto",
+          demanda: "Media",
+          utilidad:
+            "Aleaciones para endurecer platino y paladio, aleación para titanio, catalizador en refinería petroleras.",
         },
         {
           simbolo: "Rh",
@@ -1174,6 +1345,21 @@ export default {
           dibujar: true,
           tags: ["Metales Transitorios"],
           color: "pink",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal de transición",
+          estado_natural: "Sólido",
+          color_info: "Blanco plateado",
+          grupo: "6",
+          dureza: "6.0",
+          electronegatividad: "2.28",
+          estado_de_oxidacion: "1, 2, ,3, 4, 5, 6",
+          minerales_asoc:
+            "Rhodita, boweita",
+          ubicacion_mundial: "Sudáfrica, Rusia",
+          tipo_exploracion: "Subterránea",
+          demanda: "Muy Alta",
+          utilidad:
+            "Galvanizar oro blanco, catalizador para hidrogenación e hidrocarburnos, contactos eléctricos.",
         },
         {
           simbolo: "Pd",
@@ -1183,6 +1369,21 @@ export default {
           dibujar: true,
           tags: ["Metales Transitorios"],
           color: "pink",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal de transición",
+          estado_natural: "Sólido",
+          color_info: "Blanco plateado",
+          grupo: "10",
+          dureza: "4.75",
+          electronegatividad: "2.20",
+          estado_de_oxidacion: "1, 2, 4, 6",
+          minerales_asoc:
+            "Estibiopaladinita, naldreiita, polarita, potarita (foto)",
+          ubicacion_mundial: "Rusia, Australia, Etiopía, Sudáfrica y América del Norte",
+          tipo_exploracion: "Subterránea",
+          demanda: "Muy Alta",
+          utilidad:
+            "Joyería, odontología, relojería, condensadores eléctricos.",
         },
         {
           simbolo: "Ag",
@@ -1216,6 +1417,21 @@ export default {
           dibujar: true,
           tags: ["Metales Transitorios"],
           color: "pink",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal de transición",
+          estado_natural: "Sólido",
+          color_info: "Blanco plateado",
+          grupo: "12",
+          dureza: "2",
+          electronegatividad: "1.69",
+          estado_de_oxidacion: "1, 2",
+          minerales_asoc:
+            "Greenockita (foto)",
+          ubicacion_mundial: "Rusia, Australia, Etiopía, Sudáfrica y América del Norte",
+          tipo_exploracion: "Subterránea",
+          demanda: "Muy Alta",
+          utilidad:
+            "Acumuladores eléctricos, barras de control de neutrones en reactores, fabricación de esmaltes, galvanotecnia, fotografía y tintorería.",
         },
         {
           simbolo: "In",
@@ -1225,6 +1441,21 @@ export default {
           dibujar: true,
           tags: ["Otros metales"],
           color: "teal",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal del bloque p",
+          estado_natural: "Sólido",
+          color_info: "Blanco plateado",
+          grupo: "13",
+          dureza: "1.2",
+          electronegatividad: "1.78",
+          estado_de_oxidacion: "3",
+          minerales_asoc:
+            "Abramovita, minerales de tierras raras, roquesita (foto)",
+          ubicacion_mundial: "Japón, China",
+          tipo_exploracion: "Subterránea",
+          demanda: "Muy Alta",
+          utilidad:
+            "Motores de alto rendimiento, pantallas de cristal líquido (LED), fotoconductores, paneles electro luminiscentes, medicina nuclear.",
         },
         {
           simbolo: "Sn",
@@ -1234,6 +1465,21 @@ export default {
           dibujar: true,
           tags: ["Otros metales"],
           color: "teal",
+          src: "./assets/Sr.jpg",
+          serie_quimica: "Metal del bloque p",
+          estado_natural: "Sólido",
+          color_info: "Blanco plateado",
+          grupo: "14",
+          dureza: "1.5",
+          electronegatividad: "1.96",
+          estado_de_oxidacion: "2, 4",
+          minerales_asoc:
+            "Casiterita (foto)",
+          ubicacion_mundial: "Alemania, Francia, Portugal, España, Brasil, Bolivia, Indonesia, China",
+          tipo_exploracion: "Subterránea",
+          demanda: "Muy Alta",
+          utilidad:
+            "Protector del hierro para latas de conserva, fungicidas, tintes, dentífricos, pigmentos, uso en etiquetas, material de soldadura, esmaltes cerámicos, sobre taponado de botellas de vino.",
         },
         {
           simbolo: "Sb",
