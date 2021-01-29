@@ -13,16 +13,15 @@
       <v-row class="background">
       <v-container fluid style="width:100%">
         <v-layout>
-        <v-col md="9">
+        <v-col md="9" style="width:100%;">
         <v-row
           wrap
           no-gutters
           v-for="(row, rindex) in qelements"
           :key="rindex"
-          style="min-width: 100%"
+          style="min-width: 100%;"
         >
           <v-col
-            md="0.67"
             v-for="(col, cindex) in row"
             :key="cindex"
             class="box"
@@ -30,7 +29,7 @@
             <v-tooltip right open-delay="400">
               <template v-slot:activator="{ on, attrs }">
                 <v-hover v-if="col.dibujar" v-slot="{ hover }">
-                  <div class="bordeado">
+                  <div class="bordeado" style="height: 100%;">
                   <v-card
                     dark
                     tile
@@ -39,7 +38,8 @@
                     :elevation="hover ? 12 : 0"
                     v-bind="attrs"
                     v-on="on"
-                    outlined                    
+                    outlined
+                    style="height: 100%;"               
                   >
                     <v-card-text>
                       <div class="el-num-atom">
@@ -1909,8 +1909,8 @@ export default {
 }
 
 .box {
-  max-width: 80px;
-  width: 60px;
+  max-width: 70px;
+  width: 40px;
   text-align: center;
 }
 
