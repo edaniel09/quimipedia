@@ -41,14 +41,15 @@
                     outlined
                     style="height: 100%;"               
                   >
-                    <v-card-text>
-                      <div class="el-num-atom">
+                    <v-card-text class="pa-0" style="width: 100%;">
+                      <div class="el-num-atom text-no-wrap">
                           {{   col.num_atomico   }}  
                       </div>
-                      <div class="el-simbolo">
+                      <div class="el-simbolo text-no-wrap">
                           {{   col.simbolo   }}  
                       </div>
-                      <div class="el-nombre text-no-wrap">
+                      <!-- <div class="el-nombre text-no-wrap"> -->
+                      <div style="font-size: 0.63vw; color: black; text-align: center; margin: 0 auto;" class="text-no-wrap">
                           {{   col.nombre   }}  
                       </div>
                     </v-card-text>
