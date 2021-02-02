@@ -2,157 +2,340 @@
   <v-app id="app">
     <v-container fluid style="height: 100vh" class="background">
       <!-- <h1 style="color: yellow;">QUIMIPEDIA</h1> -->
-      <v-img 
-      src="./assets/qm.png"
-      max-height="100px"
-      max-width="200px"></v-img> 
-      <categories 
-      :groups="groups"
-      @change="changeCategory"></categories>
+      <v-img src="./assets/qm.png" max-height="100px" max-width="200px"></v-img>
+      <categories :groups="groups" @change="changeCategory"></categories>
       <br />
       <v-row class="background">
-      <v-container fluid style="width:100%">
-        <v-layout>
-        <v-col md="9" style="width:100%;">
-        <v-row
-          wrap
-          no-gutters
-          v-for="(row, rindex) in qelements"
-          :key="rindex"
-          style="min-width: 100%;"
-        >
-          <v-col
-            v-for="(col, cindex) in row"
-            :key="cindex"
-            class="box"
-          >
-            <v-tooltip right open-delay="400">
-              <template v-slot:activator="{ on, attrs }">
-                <v-hover v-if="col.dibujar" v-slot="{ hover }">
-                  <div class="bordeado" style="height: 100%;">
-                  <v-card
-                    dark
-                    tile
-                    flat
-                    :color="hover ? 'orange' : getColor(col)"
-                    :elevation="hover ? 12 : 0"
-                    v-bind="attrs"
-                    v-on="on"
-                    outlined
-                    style="height: 100%;"               
-                  >
-                    <v-card-text class="pa-0" style="width: 100%;">
-                      <div class="el-num-atom text-no-wrap">
-                          {{   col.num_atomico   }}  
-                      </div>
-                      <div class="el-simbolo text-no-wrap">
-                          {{   col.simbolo   }}  
-                      </div>
-                      <!-- <div class="el-nombre text-no-wrap"> -->
-                      <div style="font-size: 0.63vw; color: black; text-align: center; margin: 0 auto;" class="text-no-wrap">
-                          {{   col.nombre   }}  
-                      </div>
-                    </v-card-text>
-                  </v-card></div>
-                </v-hover>
-              </template>
-              <v-card max-width="600" min-width="500" flat>
-                <v-card-text style="text-align: center">
-                  <h1>{{ col.nombre }}</h1>
-                </v-card-text>
-                <v-row>
-                  <v-col>
-                    <v-row>
-                      <v-col>
-                      <v-img
-                        v-if="col.src"
-                        height="250"
-                        width="250"
-                        :src="require('./assets/' + col.simbolo + '.jpg')"
-                      >
-                      <v-col>
-                      <div style="background-color: white; opacity: 60%;">
-                        <v-row
-                          style="color: black; font-size: x-large;"
-                          class="v-card-content"
-                        >
-                          <b style="color: black; font-size: x-large">{{
-                            col.num_atomico
-                          }}</b>
+        <v-container fluid style="width: 100%">
+          <v-layout>
+            <v-row>
+              <v-col md="9" style="width: 100%">
+                <v-row
+                  wrap
+                  no-gutters
+                  v-for="(row, rindex) in qelements"
+                  :key="rindex"
+                  style="min-width: 100%"
+                >
+                  <v-col v-for="(col, cindex) in row" :key="cindex" class="box">
+                    <v-tooltip right open-delay="400">
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-hover v-if="col.dibujar" v-slot="{ hover }">
+                          <div class="bordeado" style="height: 100%">
+                            <v-card
+                              dark
+                              tile
+                              flat
+                              :color="hover ? 'orange' : getColor(col)"
+                              :elevation="hover ? 12 : 0"
+                              v-bind="attrs"
+                              v-on="on"
+                              outlined
+                              style="height: 100%"
+                            >
+                              <v-card-text class="pa-0" style="width: 100%">
+                                <div class="el-num-atom text-no-wrap">
+                                  {{ col.num_atomico }}
+                                </div>
+                                <div class="el-simbolo text-no-wrap">
+                                  {{ col.simbolo }}
+                                </div>
+                                <!-- <div class="el-nombre text-no-wrap"> -->
+                                <div
+                                  style="
+                                    font-size: 0.63vw;
+                                    color: black;
+                                    text-align: center;
+                                    margin: 0 auto;
+                                  "
+                                  class="text-no-wrap"
+                                >
+                                  {{ col.nombre }}
+                                </div>
+                              </v-card-text>
+                            </v-card>
+                          </div>
+                        </v-hover>
+                      </template>
+                      <v-card max-width="600" min-width="500" flat>
+                        <v-card-text style="text-align: center">
+                          <h1>{{ col.nombre }}</h1>
+                        </v-card-text>
+                        <v-row>
+                          <v-col>
+                            <v-row>
+                              <v-col>
+                                <v-img
+                                  v-if="col.src"
+                                  height="250"
+                                  width="250"
+                                  :src="
+                                    require('./assets/' + col.simbolo + '.jpg')
+                                  "
+                                >
+                                  <v-col>
+                                    <div
+                                      style="
+                                        background-color: white;
+                                        opacity: 60%;
+                                      "
+                                    >
+                                      <v-row
+                                        style="color: black; font-size: x-large"
+                                        class="v-card-content"
+                                      >
+                                        <b
+                                          style="
+                                            color: black;
+                                            font-size: x-large;
+                                          "
+                                          >{{ col.num_atomico }}</b
+                                        >
+                                      </v-row>
+                                      <v-row class="v-card-content">
+                                        <b
+                                          style="
+                                            color: black;
+                                            font-size: x-large;
+                                          "
+                                          >{{ col.simbolo }}</b
+                                        >
+                                      </v-row>
+                                    </div>
+                                  </v-col>
+                                </v-img>
+                              </v-col>
+                            </v-row>
+                            <v-row> </v-row>
+                          </v-col>
+                          <v-col style="color: black">
+                            <div class="description">
+                              <div><b>Nombre Común:</b> {{ col.nombre }}</div>
+                              <div>
+                                <b>Serie Química:</b> {{ col.serie_quimica }}
+                              </div>
+                              <div>
+                                <b>Estado Natural:</b> {{ col.estado_natural }}
+                              </div>
+                              <div><b>Color:</b> {{ col.color_info }}</div>
+                              <div>
+                                <b>Numero atómico:</b> {{ col.num_atomico }}
+                              </div>
+                              <div><b>Grupo:</b> {{ col.grupo }}</div>
+                              <div><b>Dureza:</b> {{ col.dureza }}</div>
+                              <div>
+                                <b>Masa atómica:</b> {{ col.masa_atomica }}
+                              </div>
+                              <div>
+                                <b>Ubicación en el Mundo:</b>
+                                {{ col.ubicacion_mundial }}
+                              </div>
+                              <div>
+                                <b>Tipo de Explotación:</b>
+                                {{ col.tipo_exploracion }}
+                              </div>
+                              <div><b>Demanda:</b> {{ col.demanda }}</div>
+                              <div><b>Utilidad:</b> {{ col.utilidad }}</div>
+                              <div>
+                                <b>Electronegatividad:</b>
+                                {{ col.electronegatividad }}
+                              </div>
+                              <div>
+                                <b>Estado de Oxidación:</b>
+                                {{ col.estado_de_oxidacion }}
+                              </div>
+                              <div>
+                                <b>Minerales Asociados:</b>
+                                {{ col.minerales_asoc }}
+                              </div>
+                            </div>
+                          </v-col>
                         </v-row>
-                        <v-row class="v-card-content">
-                          <b style="color: black; font-size: x-large">{{
-                            col.simbolo
-                          }}</b>
+                        <v-row align="center">
+                          <v-col>
+                            <div class="description move-right"></div>
+                          </v-col>
+                          <v-col> </v-col>
                         </v-row>
-                      </div>
-                      </v-col>
-                      </v-img>
-                      </v-col>
-                      
-                    </v-row>
-                    <v-row> </v-row>
-                  </v-col>
-                  <v-col style="color: black">
-                    <div class="description">
-                      <div><b>Nombre Común:</b> {{ col.nombre }}</div>
-                      <div><b>Serie Química:</b> {{ col.serie_quimica }}</div>
-                      <div><b>Estado Natural:</b> {{ col.estado_natural }}</div>
-                      <div><b>Color:</b> {{ col.color_info }}</div>
-                      <div><b>Numero atómico:</b> {{ col.num_atomico }}</div>
-                      <div><b>Grupo:</b> {{ col.grupo }}</div>
-                      <div><b>Dureza:</b> {{ col.dureza }}</div>
-                      <div><b>Masa atómica:</b> {{ col.masa_atomica }}</div>
-                      <div>
-                        <b>Ubicación en el Mundo:</b>
-                        {{ col.ubicacion_mundial }}
-                      </div>
-                      <div>
-                        <b>Tipo de Explotación:</b> {{ col.tipo_exploracion }}
-                      </div>
-                      <div><b>Demanda:</b> {{ col.demanda }}</div>
-                      <div><b>Utilidad:</b> {{ col.utilidad }}</div>
-                      <div>
-                        <b>Electronegatividad:</b> {{ col.electronegatividad }}
-                      </div>
-                      <div>
-                        <b>Estado de Oxidación:</b>
-                        {{ col.estado_de_oxidacion }}
-                      </div>
-                      <div>
-                        <b>Minerales Asociados:</b> {{ col.minerales_asoc }}
-                      </div>
-                    </div>
+                      </v-card>
+                    </v-tooltip>
                   </v-col>
                 </v-row>
-                <v-row align="center">
-                  <v-col>
-                    <div class="description move-right"></div>
+              </v-col>
+              <v-col md="3" style="width: 100%">
+                <questions></questions>
+              </v-col>
+            </v-row>
+          </v-layout>
+          <v-container fluid style="width: 100%">
+            <v-layout>
+              <v-col md="9" style="width: 100%">
+                <v-row 
+                  wrap
+                  no-gutters
+                  v-for="(row, idx) in extra_elements" 
+                  :key="idx"
+                  style="min-width: 100%;">
+                  <v-col v-for="(col, cidx) in row" :key="cidx">
+                    <v-tooltip right open-delay="400">
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-hover v-if="col.dibujar" v-slot="{ hover }">
+                          <div class="bordeado" style="height: 100%">
+                            <v-card
+                              dark
+                              tile
+                              flat
+                              :color="hover ? 'orange' : getColor(col)"
+                              :elevation="hover ? 12 : 0"
+                              v-bind="attrs"
+                              v-on="on"
+                              outlined
+                              style="height: 100%"
+                            >
+                              <v-card-text class="pa-0" style="width: 100%">
+                                <div class="el-num-atom text-no-wrap">
+                                  {{ col.num_atomico }}
+                                </div>
+                                <div class="el-simbolo text-no-wrap">
+                                  {{ col.simbolo }}
+                                </div>
+                                <!-- <div class="el-nombre text-no-wrap"> -->
+                                <div
+                                  style="
+                                    font-size: 0.63vw;
+                                    color: black;
+                                    text-align: center;
+                                    margin: 0 auto;
+                                  "
+                                  class="text-no-wrap"
+                                >
+                                  {{ col.nombre }}
+                                </div>
+                              </v-card-text>
+                            </v-card>
+                          </div>
+                        </v-hover>
+                      </template>
+                      <v-card max-width="600" min-width="500" flat>
+                        <v-card-text style="text-align: center">
+                          <h1>{{ col.nombre }}</h1>
+                        </v-card-text>
+                        <v-row>
+                          <v-col>
+                            <v-row>
+                              <v-col>
+                                <v-img
+                                  v-if="col.src"
+                                  height="250"
+                                  width="250"
+                                  :src="
+                                    require('./assets/' + col.simbolo + '.jpg')
+                                  "
+                                >
+                                  <v-col>
+                                    <div
+                                      style="
+                                        background-color: white;
+                                        opacity: 60%;
+                                      "
+                                    >
+                                      <v-row
+                                        style="color: black; font-size: x-large"
+                                        class="v-card-content"
+                                      >
+                                        <b
+                                          style="
+                                            color: black;
+                                            font-size: x-large;
+                                          "
+                                          >{{ col.num_atomico }}</b
+                                        >
+                                      </v-row>
+                                      <v-row class="v-card-content">
+                                        <b
+                                          style="
+                                            color: black;
+                                            font-size: x-large;
+                                          "
+                                          >{{ col.simbolo }}</b
+                                        >
+                                      </v-row>
+                                    </div>
+                                  </v-col>
+                                </v-img>
+                              </v-col>
+                            </v-row>
+                            <v-row> </v-row>
+                          </v-col>
+                          <v-col style="color: black">
+                            <div class="description">
+                              <div><b>Nombre Común:</b> {{ col.nombre }}</div>
+                              <div>
+                                <b>Serie Química:</b> {{ col.serie_quimica }}
+                              </div>
+                              <div>
+                                <b>Estado Natural:</b> {{ col.estado_natural }}
+                              </div>
+                              <div><b>Color:</b> {{ col.color_info }}</div>
+                              <div>
+                                <b>Numero atómico:</b> {{ col.num_atomico }}
+                              </div>
+                              <div><b>Grupo:</b> {{ col.grupo }}</div>
+                              <div><b>Dureza:</b> {{ col.dureza }}</div>
+                              <div>
+                                <b>Masa atómica:</b> {{ col.masa_atomica }}
+                              </div>
+                              <div>
+                                <b>Ubicación en el Mundo:</b>
+                                {{ col.ubicacion_mundial }}
+                              </div>
+                              <div>
+                                <b>Tipo de Explotación:</b>
+                                {{ col.tipo_exploracion }}
+                              </div>
+                              <div><b>Demanda:</b> {{ col.demanda }}</div>
+                              <div><b>Utilidad:</b> {{ col.utilidad }}</div>
+                              <div>
+                                <b>Electronegatividad:</b>
+                                {{ col.electronegatividad }}
+                              </div>
+                              <div>
+                                <b>Estado de Oxidación:</b>
+                                {{ col.estado_de_oxidacion }}
+                              </div>
+                              <div>
+                                <b>Minerales Asociados:</b>
+                                {{ col.minerales_asoc }}
+                              </div>
+                            </div>
+                          </v-col>
+                        </v-row>
+                        <v-row align="center">
+                          <v-col>
+                            <div class="description move-right"></div>
+                          </v-col>
+                          <v-col> </v-col>
+                        </v-row>
+                      </v-card>
+                    </v-tooltip>
                   </v-col>
-                  <v-col> </v-col>
                 </v-row>
-              </v-card>
-            </v-tooltip>
-          </v-col>
-        </v-row>
-        </v-col>
-        <v-col md="3" style="width:100%;">
-        <questions></questions>
-        </v-col>
-        </v-layout>
-      </v-container>
+              </v-col>
+            </v-layout>
+          </v-container>
+        </v-container>
       </v-row>
     </v-container>
   </v-app>
 </template>
 
 <script>
-import Questions from './components/Questions.vue'
-import Categories from './components/Categories.vue'
+import Questions from "./components/Questions.vue";
+import Categories from "./components/Categories.vue";
 export default {
   components: {
     Questions,
-    Categories
+    Categories,
   },
   name: "App",
   data: () => ({
@@ -178,8 +361,7 @@ export default {
           dureza: "N/A",
           electronegatividad: "2.2",
           estado_de_oxidacion: "-1, 1, 0",
-          minerales_asoc:
-            "N/A",
+          minerales_asoc: "N/A",
           ubicacion_mundial: "Atmósfera de todo el planeta",
           tipo_exploracion: "N/A",
           demanda: "Muy Alta",
@@ -253,7 +435,8 @@ export default {
           estado_de_oxidacion: "0",
           minerales_asoc:
             "Uranio, torio, cleveíta, pechbenda, carnotita, monacita",
-          ubicacion_mundial: "Atmósfera de todo el planeta, Estados Unidos, Rusia, Polonia, Qatar, Tanzania",
+          ubicacion_mundial:
+            "Atmósfera de todo el planeta, Estados Unidos, Rusia, Polonia, Qatar, Tanzania",
           tipo_exploracion: "Desintegración radioactiva",
           demanda: "Alta",
           utilidad:
@@ -279,7 +462,8 @@ export default {
           estado_de_oxidacion: "1",
           minerales_asoc:
             "Lepidolita, petalita, espodumena (foto), ambligolita ",
-          ubicacion_mundial: "Argentina, Bolivia, Chile, Perú, Colombia, Estados Unidos",
+          ubicacion_mundial:
+            "Argentina, Bolivia, Chile, Perú, Colombia, Estados Unidos",
           tipo_exploracion: "Cielo Abierto",
           demanda: "Alta – Muy Alta",
           utilidad:
@@ -301,9 +485,9 @@ export default {
           dureza: "5.5",
           electronegatividad: "1.57",
           estado_de_oxidacion: "2",
-          minerales_asoc:
-            "Berilo (foto), bertrandita, crisoberilo, fenaquita ",
-          ubicacion_mundial: "Austria, Alemania, Irlanda, Madagascar, Rusia Brasil, Sudáfrica, China",
+          minerales_asoc: "Berilo (foto), bertrandita, crisoberilo, fenaquita ",
+          ubicacion_mundial:
+            "Austria, Alemania, Irlanda, Madagascar, Rusia Brasil, Sudáfrica, China",
           tipo_exploracion: "Subterránea",
           demanda: "Alta",
           utilidad:
@@ -357,7 +541,8 @@ export default {
           estado_de_oxidacion: "3",
           minerales_asoc:
             "Depósitos evaporíticos (bórax) (foto), sasolitas, pegmatitas ",
-          ubicacion_mundial: "Estados Unidos, Argentina, Turquía, Italia, Chile",
+          ubicacion_mundial:
+            "Estados Unidos, Argentina, Turquía, Italia, Chile",
           tipo_exploracion: "Cielo Abierto",
           demanda: "Alta",
           utilidad:
@@ -381,7 +566,8 @@ export default {
           estado_de_oxidacion: "4, 2",
           minerales_asoc:
             "Caliza, dolomita, mármol, kimberlita (foto), lamproita ",
-          ubicacion_mundial: "Rusia, Estados Unidos, México, Groenlandia, Sudáfrica, Namibia, Rep. Del Congo, Brasil, Australia",
+          ubicacion_mundial:
+            "Rusia, Estados Unidos, México, Groenlandia, Sudáfrica, Namibia, Rep. Del Congo, Brasil, Australia",
           tipo_exploracion: "Cielo Abierto – Subterráneo",
           demanda: "Muy Alta",
           utilidad:
@@ -451,9 +637,9 @@ export default {
           dureza: "N/A",
           electronegatividad: "3.98",
           estado_de_oxidacion: "-1",
-          minerales_asoc:
-            "Fluorita, fluorapatito, criolita (foto)",
-          ubicacion_mundial: "China, México, Mongolia, Sudáfrica, España, Rusia",
+          minerales_asoc: "Fluorita, fluorapatito, criolita (foto)",
+          ubicacion_mundial:
+            "China, México, Mongolia, Sudáfrica, España, Rusia",
           tipo_exploracion: "Subterránea",
           demanda: "Media – Alta",
           utilidad:
@@ -476,8 +662,7 @@ export default {
           dureza: "N/A",
           electronegatividad: "N/A",
           estado_de_oxidacion: "0",
-          minerales_asoc:
-            "N/A",
+          minerales_asoc: "N/A",
           ubicacion_mundial: "Atmósfera de todo el planeta",
           tipo_exploracion: "N/A",
           demanda: "Alta",
@@ -502,8 +687,7 @@ export default {
           dureza: "1.2",
           electronegatividad: "0.93",
           estado_de_oxidacion: "1",
-          minerales_asoc:
-            "Amarillita, jadeita, halita (foto), zeolita",
+          minerales_asoc: "Amarillita, jadeita, halita (foto), zeolita",
           ubicacion_mundial: "Agua salada de todo el planeta",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
@@ -528,7 +712,8 @@ export default {
           estado_de_oxidacion: "2",
           minerales_asoc:
             "Dolomita, magnesita (foto), dolomía, brucita, carnalita, olivino",
-          ubicacion_mundial: "Brasil, India, Austria, Polonia, Rusia, China, Estados Unidos",
+          ubicacion_mundial:
+            "Brasil, India, Austria, Polonia, Rusia, China, Estados Unidos",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
           utilidad:
@@ -580,9 +765,9 @@ export default {
           dureza: "2.80",
           electronegatividad: "1.61",
           estado_de_oxidacion: "2, 8, 3",
-          minerales_asoc:
-            "Bauxita, gibbsita, boehmita, diásporo",
-          ubicacion_mundial: "Caribe, Australia, Brasil, África, Vietnam, Grecia, Irán, Venezuela",
+          minerales_asoc: "Bauxita, gibbsita, boehmita, diásporo",
+          ubicacion_mundial:
+            "Caribe, Australia, Brasil, África, Vietnam, Grecia, Irán, Venezuela",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
           utilidad:
@@ -628,9 +813,9 @@ export default {
           dureza: "5",
           electronegatividad: "2.19",
           estado_de_oxidacion: "+/- 3, 5",
-          minerales_asoc:
-            "Apatita (foto)",
-          ubicacion_mundial: "Marruecos, Rusia, Estados Unidos, Sahara Occidental, España, Perú",
+          minerales_asoc: "Apatita (foto)",
+          ubicacion_mundial:
+            "Marruecos, Rusia, Estados Unidos, Sahara Occidental, España, Perú",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
           utilidad:
@@ -654,7 +839,8 @@ export default {
           estado_de_oxidacion: "+/- 2, 4, 6",
           minerales_asoc:
             "Pirita (foto), galena, yeso, cinabrio, esfalerita, estibina, combustibles fósiles",
-          ubicacion_mundial: "Estados Unidos, Australia, Suiza, República Checa, Suecia, Noruega, Rusia, Japón",
+          ubicacion_mundial:
+            "Estados Unidos, Australia, Suiza, República Checa, Suecia, Noruega, Rusia, Japón",
           tipo_exploracion: "Cielo abierto y subterránea",
           demanda: "Alta",
           utilidad:
@@ -676,8 +862,7 @@ export default {
           dureza: "N/A",
           electronegatividad: "3.16",
           estado_de_oxidacion: "+/- 1, 3, 5, 7",
-          minerales_asoc:
-            "Carnalita (foto)",
+          minerales_asoc: "Carnalita (foto)",
           ubicacion_mundial: "China",
           tipo_exploracion: "N/A",
           demanda: "Alta",
@@ -701,8 +886,7 @@ export default {
           dureza: "N/A",
           electronegatividad: "N/A",
           estado_de_oxidacion: "0",
-          minerales_asoc:
-            "N/A",
+          minerales_asoc: "N/A",
           ubicacion_mundial: "Atmósfera de todo el planeta",
           tipo_exploracion: "N/A",
           demanda: "Media",
@@ -727,8 +911,7 @@ export default {
           dureza: "0.5",
           electronegatividad: "0.82",
           estado_de_oxidacion: "1",
-          minerales_asoc:
-            "Carnalita, langbeinita, polihalita, silvina (foto)",
+          minerales_asoc: "Carnalita, langbeinita, polihalita, silvina (foto)",
           ubicacion_mundial: "España, Alemania, Italia, Estados Unidos",
           tipo_exploracion: "Cielo abierto",
           demanda: "Media – Alta",
@@ -753,7 +936,8 @@ export default {
           estado_de_oxidacion: "2",
           minerales_asoc:
             "Caliza (foto), calcita, dolomía, yeso, alabastro, feldespatos ",
-          ubicacion_mundial: "México, Brasil, Alemania, Japón, Estados Unidos, China, Reino Unido",
+          ubicacion_mundial:
+            "México, Brasil, Alemania, Japón, Estados Unidos, China, Reino Unido",
           tipo_exploracion: "Cielo Abierto",
           demanda: "Alta – Muy Alta",
           utilidad:
@@ -775,8 +959,7 @@ export default {
           dureza: "7.5",
           electronegatividad: "1.36",
           estado_de_oxidacion: "3",
-          minerales_asoc:
-            "Euxenita, galodinita, thortveitita (foto)",
+          minerales_asoc: "Euxenita, galodinita, thortveitita (foto)",
           ubicacion_mundial: "Zona de Escandinavia, Madagascar",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
@@ -801,7 +984,8 @@ export default {
           estado_de_oxidacion: "-1, 1, 2, 3, 4",
           minerales_asoc:
             "Anatasa, brookita, ilmenita, perovskita, rutilo, titanita (foto)",
-          ubicacion_mundial: "Australia, Canadá, China, India, Mozambique, Nueva Zelanda, Noruega, Ucrania, Sudáfrica, Kazajistán",
+          ubicacion_mundial:
+            "Australia, Canadá, China, India, Mozambique, Nueva Zelanda, Noruega, Ucrania, Sudáfrica, Kazajistán",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
           utilidad:
@@ -823,8 +1007,7 @@ export default {
           dureza: "7.0",
           electronegatividad: "1.63",
           estado_de_oxidacion: "2, 3, 4, 5",
-          minerales_asoc:
-            "Patronita, vanadinita (foto), carnotita",
+          minerales_asoc: "Patronita, vanadinita (foto), carnotita",
           ubicacion_mundial: "Sudáfrica, China, Rusia",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
@@ -847,8 +1030,7 @@ export default {
           dureza: "8.5",
           electronegatividad: "1.66",
           estado_de_oxidacion: "2, 3, 6",
-          minerales_asoc:
-            "Cromita (foto)",
+          minerales_asoc: "Cromita (foto)",
           ubicacion_mundial: "Sudáfrica, Kazajistán, India, Turquía, Rusia",
           tipo_exploracion: "Cielo abierto",
           demanda: "Muy Alta",
@@ -871,8 +1053,7 @@ export default {
           dureza: "8.5",
           electronegatividad: "1.66",
           estado_de_oxidacion: "2, 3, 6",
-          minerales_asoc:
-            "Cromita (foto)",
+          minerales_asoc: "Cromita (foto)",
           ubicacion_mundial: "Sudáfrica, Kazajistán, India, Turquía, Rusia",
           tipo_exploracion: "Cielo abierto",
           demanda: "Muy Alta",
@@ -897,7 +1078,8 @@ export default {
           estado_de_oxidacion: "2, 3",
           minerales_asoc:
             "Hematita (foto), magnetita, ilmenita, limonita, siderita, pirita.",
-          ubicacion_mundial: "Australia, Brasil, Rusia, China, Ucrania, Canadá, India, Estados Unidos.",
+          ubicacion_mundial:
+            "Australia, Brasil, Rusia, China, Ucrania, Canadá, India, Estados Unidos.",
           tipo_exploracion: "Subterránea",
           demanda: "Muy Alta",
           utilidad:
@@ -919,8 +1101,7 @@ export default {
           dureza: "4",
           electronegatividad: "1.88",
           estado_de_oxidacion: "-1, 1, 2, 3, 4, 5",
-          minerales_asoc:
-            "Cobaltitas, carrolita, linneita (foto)",
+          minerales_asoc: "Cobaltitas, carrolita, linneita (foto)",
           ubicacion_mundial: "Estados Unidos, Alemania, Suecia ",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
@@ -945,7 +1126,8 @@ export default {
           estado_de_oxidacion: "0, 2, 3",
           minerales_asoc:
             "Kamacita, taenita, garnierita (foto), millerita, pentladita, pirrotina, niquelina.",
-          ubicacion_mundial: "Indonesia, Filipinas, Nueva Caledonia, Rusia, Australia, Canadá, China, Cuba, Brasil.",
+          ubicacion_mundial:
+            "Indonesia, Filipinas, Nueva Caledonia, Rusia, Australia, Canadá, China, Cuba, Brasil.",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
           utilidad:
@@ -969,7 +1151,8 @@ export default {
           estado_de_oxidacion: "+1, +3",
           minerales_asoc:
             "Cobre nativo (foto), Cuprita, Covelina, Calcopirita, Pirita, Calcosina, Bornita",
-          ubicacion_mundial: "Chile, Mongolia, Indonesia, México, Perú, Brasil, Estados Unidos",
+          ubicacion_mundial:
+            "Chile, Mongolia, Indonesia, México, Perú, Brasil, Estados Unidos",
           tipo_exploracion: "Cielo Abierto y Subterránea",
           demanda: "Muy Alta",
           utilidad:
@@ -993,7 +1176,8 @@ export default {
           estado_de_oxidacion: "2",
           minerales_asoc:
             "Esfalerita (foto), smithsonita, hemimorfita, franklinita.",
-          ubicacion_mundial: "China, Perú, Australia, India, Estados Unidos, Canadá, México, Bolivia, Irlanda.",
+          ubicacion_mundial:
+            "China, Perú, Australia, India, Estados Unidos, Canadá, México, Bolivia, Irlanda.",
           tipo_exploracion: "Cielo abierto, subterráneo",
           demanda: "Alta",
           utilidad:
@@ -1017,7 +1201,8 @@ export default {
           estado_de_oxidacion: "3",
           minerales_asoc:
             "Bauxita, carbón, diásporo (foto), germanita, esfalerita.",
-          ubicacion_mundial: "Rusia, Eslovaquia, Suiza, Grecia, Argentina, Chile, Perú.",
+          ubicacion_mundial:
+            "Rusia, Eslovaquia, Suiza, Grecia, Argentina, Chile, Perú.",
           tipo_exploracion: "Cielo abierto",
           demanda: "Alta",
           utilidad:
@@ -1039,8 +1224,7 @@ export default {
           dureza: "6",
           electronegatividad: "2.01",
           estado_de_oxidacion: "-4, -3, -2, -1, 0, 1, 2, 3, 4",
-          minerales_asoc:
-            "Germanita (foto), garnierita, carbón, argidorita.",
+          minerales_asoc: "Germanita (foto), garnierita, carbón, argidorita.",
           ubicacion_mundial: "Rusia, China.",
           tipo_exploracion: "Cielo abierto",
           demanda: "Baja – Media",
@@ -1063,8 +1247,7 @@ export default {
           dureza: "3.5",
           electronegatividad: "2.0",
           estado_de_oxidacion: "3, 5",
-          minerales_asoc:
-            "Arsenopirita (foto)",
+          minerales_asoc: "Arsenopirita (foto)",
           ubicacion_mundial: "China, Perú, Filipinas, Chile, Canadá",
           tipo_exploracion: "Subterráneo",
           demanda: "Media – Alta",
@@ -1087,13 +1270,11 @@ export default {
           dureza: "2",
           electronegatividad: "2.48",
           estado_de_oxidacion: "-2, 2, 4, 6",
-          minerales_asoc:
-            "Rocas y suelo de toda la tierra",
+          minerales_asoc: "Rocas y suelo de toda la tierra",
           ubicacion_mundial: "Alrededor del planeta",
           tipo_exploracion: "Cielo abierto",
           demanda: "Baja – Media",
-          utilidad:
-            "Fabricación de vidrio, tratamiento para la dermatitis.",
+          utilidad: "Fabricación de vidrio, tratamiento para la dermatitis.",
         },
         {
           simbolo: "Br",
@@ -1111,8 +1292,7 @@ export default {
           dureza: "N/A",
           electronegatividad: "2.96",
           estado_de_oxidacion: "+/- 1, 3, 5, 7",
-          minerales_asoc:
-            "Agua de mar",
+          minerales_asoc: "Agua de mar",
           ubicacion_mundial: "Estados Unidos, Israel",
           tipo_exploracion: "N/A",
           demanda: "Baja",
@@ -1136,8 +1316,7 @@ export default {
           dureza: "N/A",
           electronegatividad: "3.00",
           estado_de_oxidacion: "0",
-          minerales_asoc:
-            "N/A",
+          minerales_asoc: "N/A",
           ubicacion_mundial: "Atmósfera del planeta",
           tipo_exploracion: "N/A",
           demanda: "Media",
@@ -1162,8 +1341,7 @@ export default {
           dureza: "0.3",
           electronegatividad: "0.82",
           estado_de_oxidacion: "1",
-          minerales_asoc:
-            "Leucita, polucita, zinwaldita, lepidolita (foto)",
+          minerales_asoc: "Leucita, polucita, zinwaldita, lepidolita (foto)",
           ubicacion_mundial: "Superficie de todo el planeta",
           tipo_exploracion: "Cielo abierto, subterránea",
           demanda: "Media",
@@ -1186,9 +1364,9 @@ export default {
           dureza: "1.5",
           electronegatividad: "0.95",
           estado_de_oxidacion: "2",
-          minerales_asoc:
-            "Celestina, estroncianita, estroncita",
-          ubicacion_mundial: "China, España, México, Turquía, Argentina, Irán, Inglaterra",
+          minerales_asoc: "Celestina, estroncianita, estroncita",
+          ubicacion_mundial:
+            "China, España, México, Turquía, Argentina, Irán, Inglaterra",
           tipo_exploracion: "Cielo abierto",
           demanda: "Media",
           utilidad:
@@ -1210,8 +1388,7 @@ export default {
           dureza: "5",
           electronegatividad: "1.22",
           estado_de_oxidacion: "2",
-          minerales_asoc:
-            "Gadolinita",
+          minerales_asoc: "Gadolinita",
           ubicacion_mundial: "Noruega, Suecia, Estados Unidos",
           tipo_exploracion: "Cielo abierto",
           demanda: "Media",
@@ -1234,8 +1411,7 @@ export default {
           dureza: "3",
           electronegatividad: "1.33",
           estado_de_oxidacion: "4",
-          minerales_asoc:
-            "Rocas silíceas, granito, circón",
+          minerales_asoc: "Rocas silíceas, granito, circón",
           ubicacion_mundial: "Australia, Brasil, India, Rusia, Estados Unidos",
           tipo_exploracion: "Cielo abierto y Subterráneo",
           demanda: "Media – Alta",
@@ -1258,8 +1434,7 @@ export default {
           dureza: "6",
           electronegatividad: "1.6",
           estado_de_oxidacion: "5",
-          minerales_asoc:
-            "Columbita (foto), euxenita, samarskita, fergunosita",
+          minerales_asoc: "Columbita (foto), euxenita, samarskita, fergunosita",
           ubicacion_mundial: "Brasil",
           tipo_exploracion: "Cielo abierto y Subterráneo",
           demanda: "Media",
@@ -1285,7 +1460,8 @@ export default {
           minerales_asoc:
             "Molibdenita (foto), Molibdita, Powellita, Ferrimolibdita",
           ubicacion_mundial: "Estados Unidos, China, Chile, Perú, Canadá",
-          tipo_exploracion: "Cielo Abierto y Subterránea (subproducto de minería de cobre)",
+          tipo_exploracion:
+            "Cielo Abierto y Subterránea (subproducto de minería de cobre)",
           demanda: "Alta",
           utilidad:
             "Industria petrolera, tintes plásticos, construcción de autos y aviones, aplicaciones electrónicas, pinturas y lubricantes.",
@@ -1306,8 +1482,7 @@ export default {
           dureza: "N/A",
           electronegatividad: "1.9",
           estado_de_oxidacion: "1, 3, 4, 5, 6, 7",
-          minerales_asoc:
-            "N/A",
+          minerales_asoc: "N/A",
           ubicacion_mundial: "N/A",
           tipo_exploracion: "N/A",
           demanda: "Baja",
@@ -1330,8 +1505,7 @@ export default {
           dureza: "6.5",
           electronegatividad: "2.2",
           estado_de_oxidacion: "2",
-          minerales_asoc:
-            "Laurita, anduorita, platarsita, pentladita (foto)",
+          minerales_asoc: "Laurita, anduorita, platarsita, pentladita (foto)",
           ubicacion_mundial: "Región de los Montes Urales",
           tipo_exploracion: "Cielo abierto",
           demanda: "Media",
@@ -1354,8 +1528,7 @@ export default {
           dureza: "6.0",
           electronegatividad: "2.28",
           estado_de_oxidacion: "1, 2, ,3, 4, 5, 6",
-          minerales_asoc:
-            "Rhodita, boweita",
+          minerales_asoc: "Rhodita, boweita",
           ubicacion_mundial: "Sudáfrica, Rusia",
           tipo_exploracion: "Subterránea",
           demanda: "Muy Alta",
@@ -1380,7 +1553,8 @@ export default {
           estado_de_oxidacion: "1, 2, 4, 6",
           minerales_asoc:
             "Estibiopaladinita, naldreiita, polarita, potarita (foto)",
-          ubicacion_mundial: "Rusia, Australia, Etiopía, Sudáfrica y América del Norte",
+          ubicacion_mundial:
+            "Rusia, Australia, Etiopía, Sudáfrica y América del Norte",
           tipo_exploracion: "Subterránea",
           demanda: "Muy Alta",
           utilidad:
@@ -1404,7 +1578,8 @@ export default {
           estado_de_oxidacion: "+1, +2, +3, +4",
           minerales_asoc:
             "Plata nativa con cuarzo (foto), Calcita, Cobre, Arsénico, Calcosina, Galena",
-          ubicacion_mundial: "México, Rep. Checa, Alemania, España, Australia, China",
+          ubicacion_mundial:
+            "México, Rep. Checa, Alemania, España, Australia, China",
           tipo_exploracion: "Subterránea",
           demanda: "Muy Alta",
           utilidad:
@@ -1426,9 +1601,9 @@ export default {
           dureza: "2",
           electronegatividad: "1.69",
           estado_de_oxidacion: "1, 2",
-          minerales_asoc:
-            "Greenockita (foto)",
-          ubicacion_mundial: "Rusia, Australia, Etiopía, Sudáfrica y América del Norte",
+          minerales_asoc: "Greenockita (foto)",
+          ubicacion_mundial:
+            "Rusia, Australia, Etiopía, Sudáfrica y América del Norte",
           tipo_exploracion: "Subterránea",
           demanda: "Muy Alta",
           utilidad:
@@ -1474,9 +1649,9 @@ export default {
           dureza: "1.5",
           electronegatividad: "1.96",
           estado_de_oxidacion: "2, 4",
-          minerales_asoc:
-            "Casiterita (foto)",
-          ubicacion_mundial: "Alemania, Francia, Portugal, España, Brasil, Bolivia, Indonesia, China",
+          minerales_asoc: "Casiterita (foto)",
+          ubicacion_mundial:
+            "Alemania, Francia, Portugal, España, Brasil, Bolivia, Indonesia, China",
           tipo_exploracion: "Subterránea",
           demanda: "Muy Alta",
           utilidad:
@@ -1544,7 +1719,7 @@ export default {
           nombre: "Lutecio",
           num_atomico: 71,
           masa_atomica: 174.9668,
-          dibujar: true,
+          dibujar: false,
         },
         {
           simbolo: "Hf",
@@ -1722,7 +1897,7 @@ export default {
           nombre: "Laurencio",
           num_atomico: 103,
           masa_atomica: 262,
-          dibujar: true,
+          dibujar: false,
         },
         {
           simbolo: "Rf",
@@ -1862,6 +2037,330 @@ export default {
         },
       ],
     ],
+    extra_elements: [
+      [
+        {
+          dibujar: false,
+        },
+        {
+          dibujar: false,
+        },
+        {
+          simbolo: "La",
+          nombre: "Lantano",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Ce",
+          nombre: "Cerio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Pr",
+          nombre: "Praseodimio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Nd",
+          nombre: "Neodimio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Pm",
+          nombre: "Prometio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Sm",
+          nombre: "Samario",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Eu",
+          nombre: "Europio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Gd",
+          nombre: "Gadolinio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Tb",
+          nombre: "Terbio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Dy",
+          nombre: "Disprosio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Ho",
+          nombre: "Holmio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Er",
+          nombre: "Erbio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Tm",
+          nombre: "Tulio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Yb",
+          nombre: "Yterbio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          simbolo: "Lu",
+          nombre: "Lutecio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Lantanidos"],
+          color: "lime",
+        },
+        {
+          dibujar: false,
+        }
+      ],
+      [
+        {
+          dibujar: false,
+        },
+        {
+          dibujar: false,
+        },
+        {
+          simbolo: "Ac",
+          nombre: "Actinio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Th",
+          nombre: "Torio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Pa",
+          nombre: "Protactinio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "U",
+          nombre: "Uranio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Np",
+          nombre: "Neptunio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Pu",
+          nombre: "Plutonio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Am",
+          nombre: "Americio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Cm",
+          nombre: "Curio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Bk",
+          nombre: "Berkelio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Cf",
+          nombre: "Californio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Es",
+          nombre: "Eistenio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Fm",
+          nombre: "Fermio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Md",
+          nombre: "Mendelevio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "No",
+          nombre: "Nobelio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          simbolo: "Ac",
+          nombre: "Actinio",
+          num_atomico: 57,
+          masa_atomica: 138.91,
+          dibujar: true,
+          estado: "Solido",
+          tags: ["Actinidos"],
+          color: "brown",
+        },
+        {
+          dibujar: false,
+        }
+      ],
+    ],
     groups: [
       "En Ecuador",
       "Alcalinos",
@@ -1876,7 +2375,7 @@ export default {
   }),
   methods: {
     changeCategory(category) {
-      this.selectedCategory = category
+      this.selectedCategory = category;
     },
     getColor(col) {
       if (this.selectedCategory == null) {
@@ -1938,10 +2437,10 @@ export default {
 }
 
 .bordeado {
-  border:1px solid black;
+  border: 1px solid black;
 }
 
- .background {
-  background-color: #9370DB;
-} 
+.background {
+  background-color: #9370db;
+}
 </style>
