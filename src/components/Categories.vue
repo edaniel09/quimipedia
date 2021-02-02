@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-row style="margin: auto; padding-left: 1%; padding-right: 1%">
+  <v-container fluid class="pa-0 ma-0">
+    <v-row style="padding-left: 1%; padding-right: 1%">
       <v-col
         align-self="auto"
         md="2"

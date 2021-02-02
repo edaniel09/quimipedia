@@ -340,7 +340,7 @@ export default {
   name: "App",
   data: () => ({
     selectedColor: "red",
-    unselectedColor: "#19d29d",
+    unselectedColor: "grey",
     selectedCategory: null,
     qelements: [
       [
@@ -2383,7 +2383,7 @@ export default {
       }
       if (col.tags) {
         if (col.tags.indexOf(this.selectedCategory) >= 0) {
-          return this.selectedColor;
+          return col.color;
         }
       }
       return this.unselectedColor;
